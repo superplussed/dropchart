@@ -41,16 +41,6 @@ define('Event', function() {
     };
   };
 
-  Event.prototype.onMouseOut = function(context) {
-    var that = context;
-    return function(d, i) {
-      if (d && d.y && i != that.selectedId && that.options.addMouseoverAction) {
-        that.removeRollState(that, d, i);
-        that.removePopover(that, i);
-      }
-    };
-  };
-
   Event.prototype.removeRollState = function(context, d, i) {
     var that = context;
 
@@ -93,6 +83,16 @@ define('Event', function() {
     } else {
       return function() {};
     }
+  };
+
+   Event.prototype.onMouseOut = function(context) {
+    var that = context;
+    return function(d, i) {
+      if (d && d.y && i != that.selectedId && that.options.addMouseoverAction) {
+        that.removeRollState(that, d, i);
+        that.removePopover(that, i);
+      }
+    };
   };
 
 

@@ -1,14 +1,8 @@
 define('Chart', ['DefaultOptions', 'Canvas', 'Axis', 'Popover', 'Event', 'utils'],
   function(DefaultOptions, Canvas, Axis, Popover, Event, utils) {
 
-  function Chart() {
+  function Chart(obj) {
     console.log('init Chart');
-  }
-  $.extend(Chart.prototype, new DefaultOptions());
-  Chart.prototype.abortRender = false;
-  Chart.prototype.resizing = false;
- 
-  Chart.prototype.initialize = function(obj) {
     this.data = obj.data;
     delete obj.data;
     this.defaultOptions = this.defaultHistogramOptions;
@@ -17,7 +11,10 @@ define('Chart', ['DefaultOptions', 'Canvas', 'Axis', 'Popover', 'Event', 'utils'
     $.extend(Chart.prototype, new Popover());
     $.extend(Chart.prototype, new Event());
     $.extend(Chart.prototype, new Axis(canvas));
-  };
+  }
+  $.extend(Chart.prototype, new DefaultOptions());
+  Chart.prototype.abortRender = false;
+  Chart.prototype.resizing = false;
 
   Chart.prototype.initRoot = function() {
     this.abortRender = false;

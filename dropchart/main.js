@@ -10,11 +10,13 @@ require.config({
     Linechart: 'src/models/Linechart',
     Popover: 'src/models/Popover'
   },
+  baseUrl: './dropchart/',
   urlArgs: 'uncache=' + (+new Date())
 });
 
 require([
   'require', 'chart', 'histogram'
   ], function(require, chart, histogram) {
+    debugger;
    return chart;
 });
