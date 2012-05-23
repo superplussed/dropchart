@@ -21,6 +21,12 @@ define(function() {
       return copy;
     },
 
+    extendObj: function(rootObj, extendThis) {
+      for (var attrname in extendThis) {
+        rootObj[attrname] = extendThis[attrname];
+      }
+    },
+
     roundNumber: function(num, dec) {
       return Math.round(num * Math.pow(10, dec)) / Math.pow(10, dec);
     },
@@ -35,7 +41,7 @@ define(function() {
       return ((aName < bName) ? -1 : ((aName > bName) ? 1 : 0));
     },
 
-    getBoundingRect: function(element) {
+    getDimensions: function(element) {
       if (element) {
         var svg;
         if (typeof(element) === 'string') {

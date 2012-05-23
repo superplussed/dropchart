@@ -1,4 +1,4 @@
-define(['../dropchart/lib/utils'], function(utils) {
+define(['jquery', '../dropchart/lib/utils'], function($, utils) {
   var utilsSpec = {
     runTests: function() {
       var assert = require('chai').assert;
@@ -77,17 +77,29 @@ define(['../dropchart/lib/utils'], function(utils) {
 
           describe('#isValidNumber', function(){
 
-            it('should return whether a number is a non infinity, non NaN', function() {
+            it('should return true if a number is not infinity and not NaN', function() {
               assert.equal(utils.isValidNumber(30 / 0), false);
               assert.equal(utils.isValidNumber(NaN), false);
               assert.equal(utils.isValidNumber(true), false);
               assert.equal(utils.isValidNumber(32), true);
             });
 
-            it('should work for strings of numbers as well', function() {
+            it('should work for strings of numbers', function() {
               assert.equal(utils.isValidNumber("32"), true);
               assert.equal(utils.isValidNumber("NaN"), false);
               assert.equal(utils.isValidNumber("true"), false);
+            });
+
+          });
+
+          describe('#getDimensions', function(){
+            it('it should provide the dimensions of a div element', function() {
+              $("#histogram")
+                .css("display", "block")
+                .css("height",  200)
+                .css("width", 400);
+              assert.equal(utils.getDimensions("#histogram").width, 400);
+              assert.equal(utils.getDimensions("#histogram").height, 200);
             });
 
           });

@@ -7,7 +7,9 @@ require.config({
 });
 
 define(function(require, exports, module) {
-  var utilsSpec = require("./utils.spec");
-  var chartSpec = require("./chart.spec");
-  return utilsSpec;
+  return {
+    utilsSpec: require("./utils.spec"),
+    chartSpec: require("./chart.spec"),
+    svgSpec: require("./svg.spec")
+  };
 });

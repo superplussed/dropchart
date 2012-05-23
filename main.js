@@ -7,6 +7,8 @@ require.config({
     }
   });
 
-require(["order!mocha", "order!chai", "dropchart", "test", "./testRunner"], function (mocha, chai, dropchart, test) {
+require(["order!chai", "order!mocha", "dropchart", "test", "./testRunner"],
+  function (chai, mocha, dropchart, test, testRunner) {
+    testRunner.initialize();
 
 });

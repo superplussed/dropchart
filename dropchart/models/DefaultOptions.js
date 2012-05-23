@@ -61,11 +61,8 @@ define('DefaultOptions', function() {
     marginBottom: 40,
     marginTop: 20,
 
-    dateFormat: '%Y'
-  };
+    dateFormat: '%Y',
 
-/*
-  DefaultOptions.prototype.defaultHistogramOptions = $.extend({
     barColor: '#3c421c',
     barStrokeColor: '#84d642',
     barStrokeWidth: 2,
@@ -93,7 +90,7 @@ define('DefaultOptions', function() {
     barBgRollRadius: 5,
     barBgRollStrokeColor: '#FFFFFF',
     barBgRollStrokeWidth: 2
-  }, DefaultOptions.prototype.defaultChartOptions); */
+  };
 
   return DefaultOptions;
 });
