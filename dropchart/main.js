@@ -1,22 +1,20 @@
 require.config({
   paths: {
-    utils: 'src/lib/utils',
-    Axis: 'src/models/Axis',
-    Chart: 'src/models/Chart',
-    Canvas: 'src/models/Canvas',
-    Event: 'src/models/Event',
-    Histogram: 'src/models/Histogram',
-    DefaultOptions: 'src/models/DefaultOptions',
-    Linechart: 'src/models/Linechart',
-    Popover: 'src/models/Popover'
+    utils: './dropchart/lib/utils',
+    Axis: './dropchart/models/Axis',
+    Chart: './dropchart/models/Chart',
+    Canvas: './dropchart/models/Canvas',
+    Event: './dropchart/models/Event',
+    Histogram: './dropchart/models/Histogram',
+    DefaultOptions: './dropchart/models/DefaultOptions',
+    Linechart: './dropchart/models/Linechart',
+    Popover: './dropchart/models/Popover',
+    require: '../vendor/require'
   },
-  baseUrl: './dropchart/',
   urlArgs: 'uncache=' + (+new Date())
 });
 
-require([
-  'require', 'chart', 'histogram'
-  ], function(require, chart, histogram) {
-    debugger;
-   return chart;
+define(function(require, exports, module) {
+  var Chart = require('Chart');
+  return Chart;
 });

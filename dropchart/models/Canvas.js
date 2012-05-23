@@ -64,22 +64,5 @@ define('Canvas', ['utils'], function(utils) {
     }
   };
 
-   getBoundingRect: function(element) {
-      if (element) {
-        var svg;
-        if (typeof(element) === 'string') {
-          svg = $(element).is('g, svg, rect, text');
-          element = (svg ? d3.select(element) : $(element));
-        } else {
-          svg = element[0] instanceof Array;
-        }
-        if (svg) {
-          return element.node().getBoundingClientRect();
-        } else {
-          return {width: $(element).width(), height: $(element).height(), x: $(element).offset().left, y: $(element).offset().top};
-        }
-      }
-    }
-
   return Canvas;
 });

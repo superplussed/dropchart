@@ -1,4 +1,4 @@
-define('DefaultOptions', ['jquery'], function($) {
+define('DefaultOptions', function() {
   function DefaultOptions() {
     console.log('init DefaultOptions');
   }
@@ -64,7 +64,7 @@ define('DefaultOptions', ['jquery'], function($) {
     dateFormat: '%Y'
   };
 
-
+/*
   DefaultOptions.prototype.defaultHistogramOptions = $.extend({
     barColor: '#3c421c',
     barStrokeColor: '#84d642',
@@ -93,7 +93,7 @@ define('DefaultOptions', ['jquery'], function($) {
     barBgRollRadius: 5,
     barBgRollStrokeColor: '#FFFFFF',
     barBgRollStrokeWidth: 2
-  }, DefaultOptions.prototype.defaultChartOptions);
+  }, DefaultOptions.prototype.defaultChartOptions); */
 
   return DefaultOptions;
 });

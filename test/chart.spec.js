@@ -1,6 +1,7 @@
-define(['../dropchart/main', 'jquery'], function(dropchart, $) {
-  debugger;
+define(['jquery'], function($) {
+
   var chartSpec = {
+    /*
     runTests: function() {
       $("#histogram")
         .css("display", "block")
@@ -25,6 +26,7 @@ define(['../dropchart/main', 'jquery'], function(dropchart, $) {
 
       });
     }
+    */
   };
 
   return chartSpec;
