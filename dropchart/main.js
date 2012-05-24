@@ -7,6 +7,7 @@ require.config({
     utils: './dropchart/lib/utils',
     Axis: './dropchart/models/Axis',
     Chart: './dropchart/models/Chart',
+    Dim: './dropchart/models/Dim',
     SvgElement: './dropchart/models/SvgElement',
     Canvas: './dropchart/models/Canvas',
     Event: './dropchart/models/Event',

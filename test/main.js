@@ -3,16 +3,18 @@ require.config({
     jquery: './vendor/jquery.1.7.2.min',
     testRunner: './test/testRunner',
     utilsSpec: './test/utils.spec',
-    canvasSpec: './test/canvas.spec'
+    canvasSpec: './test/canvas.spec',
+    dimSpec: './test/dim.spec'
   },
   urlArgs: 'uncache=' + (+new Date())
 });
 
-define('test', ['utilsSpec', 'canvasSpec'], function(utilsSpec, canvasSpec) {
+define('test', ['utilsSpec', 'canvasSpec', 'dimSpec'], function(utilsSpec, canvasSpec, dimSpec) {
   return {
     name: 'test',
     utilsSpec: utilsSpec,
-    canvasSpec: canvasSpec
+    canvasSpec: canvasSpec,
+    dimSpec: dimSpec
   };
 });
 

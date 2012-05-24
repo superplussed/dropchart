@@ -15,29 +15,22 @@ define(['dropchart'], function(dropchart) {
           );
           done();
         });
-        
+
         describe('#initialize()', function() {
-
           it ('should attach an SVG element', function() {
-            //$("#histogram").should.have('svg');
+            $("#histogram").should.have('svg');
           });
 
-        });
-
-        describe("attr", function(){
-          var subject = $('<div name="foo"></div>');
-
-          describe("when only attribute name is provided", function(){
-            it("passes when the element has the attribute", function(){
-              subject.should.have.attr('name');
-            });
-
-            it("passes negated when the element does not have the attribute", function(){
-              subject.should.not.have.attr('bar');
-            });
-
-           
+          it ('should set the correct dimensions for the div container', function() {
+            $("#histogram").css("width").should.equal("400px");
+            $("#histogram").css("height").should.equal("200px");
           });
+
+          it ('should set the correct dimensions for the svg container', function() {
+            $("#histogram").css("width").should.equal("400px");
+            $("#histogram").css("height").should.equal("200px");
+          });
+
         });
       });
 

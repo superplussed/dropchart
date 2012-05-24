@@ -1,7 +1,19 @@
 define(function() {
   var utils = {
+    TOP: 0,
+    RIGHT: 1,
+    BOTTOM: 2,
+    LEFT: 3,
     isBlank: function(el) {
       return (!el && el !== 0) || el === '';
+    },
+
+    percToFloat: function(val, pixels) {
+      return utils.roundNumber((utils.pxToInt(val) / 100) * pixels, 5);
+    },
+
+    floatToPerc: function(val, pixels) {
+      return utils.roundNumber((val / pixels) * 100, 5) + '%';
     },
 
     pxToInt: function(px) {

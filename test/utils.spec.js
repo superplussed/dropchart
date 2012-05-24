@@ -55,6 +55,22 @@ define(['jquery', './dropchart/lib/utils'], function($, utils) {
 
           });
 
+          describe('#percToFloat', function(){
+
+            it('should find the pixels by percentage', function() {
+              assert.equal(utils.percToFloat("77%", 301), 231.77);
+            });
+
+          });
+
+          describe('#floatToPerc', function(){
+
+            it('should find the percentage by number of pixels', function() {
+              assert.equal(utils.floatToPerc(231.77, 301), "77%");
+            });
+
+          });
+
           describe('#cloneObj', function(){
 
             it('should return a duplicate object without reference to the original', function() {
@@ -95,11 +111,13 @@ define(['jquery', './dropchart/lib/utils'], function($, utils) {
           describe('#getDimensions', function(){
             it('it should provide the dimensions of a div element', function() {
               $("#histogram")
-                .css("display", "block")
                 .css("height",  200)
                 .css("width", 400);
               assert.equal(utils.getDimensions("#histogram").width, 400);
               assert.equal(utils.getDimensions("#histogram").height, 200);
+               $("#histogram")
+                .css("width", "auto")
+                .css("height", "auto");
             });
 
           });
