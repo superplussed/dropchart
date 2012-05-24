@@ -1,4 +1,5 @@
 define('Canvas', ['utils', 'jquery', 'jquerySVG'], function(utils, $) {
+  debugger;
   function Canvas(el, options) {
     console.log('init Canvas');
     $(el).svg();
