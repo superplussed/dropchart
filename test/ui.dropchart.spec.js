@@ -3,7 +3,7 @@ define(['jquery', 'dropchart'], function($, dropchart) {
 
     runTests: function() {
 
-      var expect = require('chai').expect;
+      var expect = chai.expect;
       describe("Chart", function() {
 
         before(function(done){
@@ -23,25 +23,7 @@ define(['jquery', 'dropchart'], function($, dropchart) {
         });
 
         describe("#options", function() {
-          it ('should exist', function() {
-            expect(this.chart('getOptions')).to.have.property('options');
-          });
-
-          it ('should have default options set', function() {
-            expect(this.chart.options).to.have.property('xAxisPosition');
-          });
-
-        });
-
-        describe("#data", function() {
-          it ('should exist', function() {
-            expect(this.chart).to.have.property('data');
-          });
-        });
-
-        describe("#boundaries()", function() {
-          it ('should use the container for fullWidth and fullHeight');
-          it ('should use the container minus margins for width and height');
+         
         });
 
       });

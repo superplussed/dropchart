@@ -1,7 +1,7 @@
 define(['jquery', '../dropchart/lib/utils'], function($, utils) {
   var utilsSpec = {
     runTests: function() {
-      var assert = require('chai').assert;
+      var assert = chai.assert;
         describe('utils', function() {
           describe('#isBlank', function() {
 

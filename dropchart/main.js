@@ -20,5 +20,8 @@ require.config({
 });
 
 define( function( require, exports, module ) {
-  return require( 'uiDropchart' );
+  return {
+    dropchart: require( 'uiDropchart' ),
+    Canvas: require('Canvas')
+  };
 });

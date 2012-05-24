@@ -1,10 +1,9 @@
 define('Canvas', ['utils', 'jquery', 'jquerySVG'], function(utils, $) {
-  function Canvas(options) {
+  function Canvas(el, options) {
     console.log('init Canvas');
-
-    $('#canvas').svg();
+    $(el).svg();
     this.options = options;
-    this.getDimensions();
+    //this.getDimensions();
   }
 
   Canvas.prototype.formatX = function(val) {

@@ -92,9 +92,7 @@ define( "ui.dropchart.js", ["order!jquery", 'order!jqueryUI', 'order!jquerySVG',
     },
            
     _create: function () {
-      this.Canvas = Canvas;
-      this.SvgElement = SvgElement;
-      //this.canvas = new Canvas(this.options);
+      this.canvas = new Canvas(this.element, this.options);
     },
 
            

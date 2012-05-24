@@ -9,7 +9,7 @@ require.config({
 define(function(require, exports, module) {
   return {
     utilsSpec: require("./utils.spec"),
-    uiDropchartSpec: require("./ui.dropchart.spec")
+    canvasSpec: require("./canvas.spec")
    
   };
 });

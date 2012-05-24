@@ -1,7 +1,7 @@
 define(['jquery', 'dropchart'], function($, dropchart) {
   
-  var expect = require('chai').expect;
-  var chartSpec = {
+  var expect = chai.expect;
+  var specName = {
 
     runTests: function() {
       describe('ClassName', function() {
@@ -19,6 +19,8 @@ define(['jquery', 'dropchart'], function($, dropchart) {
     }
 
   };
+
+  return specName;
 
 });
 
