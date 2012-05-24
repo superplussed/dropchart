@@ -10,6 +10,6 @@ define(function(require, exports, module) {
   return {
     utilsSpec: require("./utils.spec"),
     chartSpec: require("./chart.spec"),
-    svgSpec: require("./svg.spec")
+    svgSpec: require("./svgElement.spec")
   };
 });

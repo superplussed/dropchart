@@ -1,9 +1,11 @@
 require.config({
   paths: {
+    jquery: './vendor/jquery.1.7.min',
+    jquerySvg: './vendor/jquery.svg',
     utils: './dropchart/lib/utils',
     Axis: './dropchart/models/Axis',
     Chart: './dropchart/models/Chart',
-    Svg: './dropchart/models/Svg',
+    SvgElement: './dropchart/models/SvgElement',
     Canvas: './dropchart/models/Canvas',
     Event: './dropchart/models/Event',
     Histogram: './dropchart/models/Histogram',
@@ -18,6 +20,6 @@ require.config({
 define(function(require, exports, module) {
   return {
     Chart: require('Chart'),
-    Svg: require('Svg')
+    SvgElement: require('SvgElement')
   };
 });

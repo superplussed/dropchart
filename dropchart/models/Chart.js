@@ -8,6 +8,7 @@ define('Chart', ['jquery', 'DefaultOptions', 'Canvas', 'Axis', 'Popover', 'Event
     this.data = obj.data;
     delete obj.data;
     this.options = $.extend(utils.cloneObj(this.defaultChartOptions), obj);
+    this.canvas = new Canvas(options);
   }
 
   return Chart;
