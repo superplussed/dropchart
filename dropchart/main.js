@@ -19,9 +19,10 @@ require.config({
   urlArgs: 'uncache=' + (+new Date())
 });
 
-define( function( require, exports, module ) {
+define( 'dropchart', ['uiDropchart', 'Canvas'], function(uiDropchart, Canvas) {
   return {
-    dropchart: require( 'uiDropchart' ),
-    Canvas: require('Canvas')
+    name: 'dropchart',
+    dropchart: uiDropchart,
+    Canvas: Canvas
   };
 });
