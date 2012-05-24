@@ -18,7 +18,7 @@ define(['jquery', 'dropchart'], function($, dropchart) {
               {x: 3, y: 7}
             ]
           });
-          this.chart = $("#histogram").dropchart();
+          this.chart = $("#histogram").dropchart;
           done();
         });
 
