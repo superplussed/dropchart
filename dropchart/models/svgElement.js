@@ -1,4 +1,4 @@
-define('SvgElement', ['utils', 'jquery', 'jquerySvg'], function(utils, $) {
+define('SvgElement', ['utils', 'jquery', 'jquerySVG'], function(utils, $) {
 
   function SvgElement() {
     console.log("init SvgElement");

@@ -1,6 +1,4 @@
-// boilerplate: https://github.com/shichuan/javascript-patterns/blob/master/jquery-plugin-patterns/ui-widget-requirejs-module.html
-
-define( ["jquery", "text!templates/asset.html", "jquery-ui.custom.min","jquery.tmpl"], function ($, assetHtml) {
+define( "ui.dropchart.js", ["order!jquery", 'order!jqueryUI', 'order!jquerySVG', 'Canvas', 'Axis', 'SvgElement'], function ($, jUI, jSVG, Canvas, Axis, SvgElement) {
 
   $.widget( "ui.dropchart", {
 
@@ -94,50 +92,26 @@ define( ["jquery", "text!templates/asset.html", "jquery-ui.custom.min","jquery.t
     },
            
     _create: function () {
-      this.data = obj.data;
-      delete obj.data;
-      this.options = $.extend(utils.cloneObj(this.defaultChartOptions), obj);
-      this.canvas = new Canvas(options);
+      this.Canvas = Canvas;
+      this.SvgElement = SvgElement;
+      //this.canvas = new Canvas(this.options);
     },
 
            
     destroy: function () {
-      //t his.element.removeStuff();
-      // For UI 1.8, destroy must be invoked from the base
-      // widget
       $.Widget.prototype.destroy.call( this );
-      // For UI 1.9, define _destroy instead and don't worry
-      // about calling the base widget
     },
 
-    methodB: function ( event ) {
-      this._trigger('methodA', event, {
-        key: value
-      });
+    getOptions: function ( ) {
+      return this.options;
     },
-
-    methodA: function ( event ) {
-      this._trigger('dataChanged', event, {
-        key: value
-      });
-    },
-
             
     _setOption: function ( key, value ) {
-      if (key === "someValue") {
-          //this.options.someValue = doSomethingWith( value );
-      } else {
-          //this.options[ key ] = value;
-      }
-
-      // For UI 1.8, _setOption must be manually invoked from
-      // the base widget
       $.Widget.prototype._setOption.apply( this, arguments );
-      // For UI 1.9 the _super method can be used instead
-      //this._super( "_setOption", key, value );
     }
-
-      //somewhere assetHtml would be used for templating, depending
-      // on your choice.
   });
 });
+
+// References
+// Essential jQuery Plugin Patterns (by James Burke) - http://goo.gl/Pc46s
+  

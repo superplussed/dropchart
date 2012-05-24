@@ -1,35 +1,30 @@
 define(['jquery', 'dropchart'], function($, dropchart) {
-  var chartSpec = {
+  var uiDropchartSpec = {
 
     runTests: function() {
 
       var expect = require('chai').expect;
-      $("#histogram")
-        .css("display", "block")
-        .css("height",  200)
-        .css("width", 400)
-        .css("border", "1px solid gray");
-
       describe("Chart", function() {
 
         before(function(done){
-          this.chart = new dropchart.Chart({
-            id: 'histogram',
-            marginLeft: 11,
-            marginRight: 22,
-            marginBottom: 33,
-            marginTop: 44,
+          $("#histogram").dropchart({
+            canvas: {
+              width: 400,
+              height: 200,
+              margin: [44, 33, 22, 11]
+            },
             data: [
               {x: 1, y: 5},
               {x: 3, y: 7}
             ]
           });
+          this.chart = $("#histogram").dropchart();
           done();
         });
 
         describe("#options", function() {
           it ('should exist', function() {
-            expect(this.chart).to.have.property('options');
+            expect(this.chart('getOptions')).to.have.property('options');
           });
 
           it ('should have default options set', function() {
@@ -53,5 +48,5 @@ define(['jquery', 'dropchart'], function($, dropchart) {
     }
   };
 
-  return chartSpec;
+  return uiDropchartSpec;
 });

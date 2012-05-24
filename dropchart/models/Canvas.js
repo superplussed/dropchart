@@ -1,6 +1,7 @@
-define('Canvas', ['utils', 'jquery', 'jquerySvg'], function(utils, $) {
+define('Canvas', ['utils', 'jquery', 'jquerySVG'], function(utils, $) {
   function Canvas(options) {
     console.log('init Canvas');
+
     $('#canvas').svg();
     this.options = options;
     this.getDimensions();

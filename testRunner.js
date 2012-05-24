@@ -3,8 +3,8 @@ define(['test', 'dropchart'], function(test, dropchart) {
     initialize: function() {
       mocha.setup('bdd');
       test.utilsSpec.runTests();
-      test.svgSpec.runTests();
-      test.chartSpec.runTests();
+      //test.svgElementSpec.runTests();
+      test.uiDropchartSpec.runTests();
       mocha.run();
     }
   };

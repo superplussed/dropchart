@@ -1,6 +1,6 @@
 require.config({
   paths: {
-    jquery: './vendor/jquery.1.7.min',
+    jquery: './vendor/jquery.1.7.2.min',
     testRunner: './test/testRunner'
   },
   urlArgs: 'uncache=' + (+new Date())
@@ -9,7 +9,9 @@ require.config({
 define(function(require, exports, module) {
   return {
     utilsSpec: require("./utils.spec"),
-    chartSpec: require("./chart.spec"),
-    svgSpec: require("./svgElement.spec")
+    uiDropchartSpec: require("./ui.dropchart.spec")
+   
   };
 });
+
+//  svgElementSpec: require("./svgElement.spec")
