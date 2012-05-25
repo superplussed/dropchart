@@ -13,10 +13,10 @@
     };
 
     this._toFloat = function(val, axis) {
-      if (isNaN(val)) {
-        return 0;
-      } else if (typeof(val) === 'string' && val.substr(-1) === '%') {
+      if (typeof(val) === 'string' && val.substr(-1) === '%') {
         return this._percToFloatOfContainer(val, axis);
+      } else if (isNaN(val)) {
+        return 0;
       } else {
         return val;
       }

@@ -9,7 +9,8 @@ define(function() {
     },
 
     percToFloat: function(val, pixels) {
-      return utils.roundNumber((utils.pxToInt(val) / 100) * pixels, 5);
+      val = parseFloat(val.substr(0, val.length - 1));
+      return utils.roundNumber((val / 100) * pixels, 5);
     },
 
     floatToPerc: function(val, pixels) {

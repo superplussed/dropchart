@@ -33,6 +33,22 @@ define(['jquery', 'dropchart'], function($, dropchart) {
 
           });
 
+          describe('#xToFloat', function() {
+
+            it ('should convert a number to a percentage', function() {
+              this.coord.xToFloat("2.5%").should.equal(10);
+            });
+
+          });
+
+          describe('#yToFloat', function() {
+
+            it ('should convert a number to a percentage', function() {
+              this.coord.yToFloat("5%").should.equal(10);
+            });
+
+          });
+
         });
 
       });

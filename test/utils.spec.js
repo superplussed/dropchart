@@ -61,6 +61,10 @@ define(['jquery', './dropchart/lib/utils'], function($, utils) {
               assert.equal(utils.percToFloat("77%", 301), 231.77);
             });
 
+            it('should work with up to 2 decimal places', function() {
+              assert.equal(utils.percToFloat("2.5%", 400), 10);
+            });
+
           });
 
           describe('#floatToPerc', function(){
