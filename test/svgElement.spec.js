@@ -1,6 +1,6 @@
 define(['jquery', 'dropchart'], function($, dropchart) {
   var svgElementSpec = {
-    runTests: function() {
+    run: function() {
       var svg = new dropchart.SvgElement(),
         expect = chai.expect;
 

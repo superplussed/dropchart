@@ -3,7 +3,7 @@ define(['dropchart'], function(dropchart) {
   var should = chai.should();
   var canvasSpec = {
 
-    runTests: function() {
+    run: function() {
       describe('Canvas', function() {
 
 

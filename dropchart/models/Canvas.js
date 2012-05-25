@@ -1,10 +1,10 @@
-define('Canvas', ['Dim', 'utils', 'jquery', 'jquerySVG'], function(Dim, utils, $) {
+define('Canvas', ['Coord', 'utils', 'jquery', 'jquerySVG'], function(Coord, utils, $) {
 
   function Canvas(el, options) {
     console.log('init Canvas');
     this.el = el;
     this.options = $.extend(options, this.defaultOptions);
-    this.dim = new Dim(options);
+    this.coord = new Coord(options);
     this.svg = $(el).svg();
     this.setCanvasDimensions();
   }
@@ -21,12 +21,13 @@ define('Canvas', ['Dim', 'utils', 'jquery', 'jquerySVG'], function(Dim, utils, $
   };
 
   Canvas.prototype.setCanvasDimensions = function() {
+    debugger;
     $( this.el )
-      .attr( "width", this.dim.x( this.options.width ) )
-      .attr( "height", this.dim.y( this.options.height ) );
+      .attr( "width", this.coord.x( this.options.width ) )
+      .attr( "height", this.coord.y( this.options.height ) );
     $( this.svg )
-      .attr( "width", this.dim.x( this.options.width - this.options.margin.left - this.options.margin.right ))
-      .attr( "height", this.dim.y( this.options.height - this.options.margin.top - this.options.margin.bottom ));
+      .attr( "width", this.coord.x( this.options.width - this.options.margin.left - this.options.margin.right ))
+      .attr( "height", this.coord.y( this.options.height - this.options.margin.top - this.options.margin.bottom ));
   };
 
   return Canvas;

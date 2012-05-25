@@ -4,17 +4,17 @@ require.config({
     testRunner: './test/testRunner',
     utilsSpec: './test/utils.spec',
     canvasSpec: './test/canvas.spec',
-    dimSpec: './test/dim.spec'
+    coordSpec: './test/coord.spec'
   },
   urlArgs: 'uncache=' + (+new Date())
 });
 
-define('test', ['utilsSpec', 'canvasSpec', 'dimSpec'], function(utilsSpec, canvasSpec, dimSpec) {
+define('test', ['utilsSpec', 'canvasSpec', 'coordSpec'], function(utilsSpec, canvasSpec, coordSpec) {
   return {
     name: 'test',
     utilsSpec: utilsSpec,
     canvasSpec: canvasSpec,
-    dimSpec: dimSpec
+    coordSpec: coordSpec
   };
 });
 

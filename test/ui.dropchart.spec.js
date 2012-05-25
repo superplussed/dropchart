@@ -1,7 +1,7 @@
 define(['jquery', 'dropchart'], function($, dropchart) {
   var uiDropchartSpec = {
 
-    runTests: function() {
+    run: function() {
 
       var expect = chai.expect;
       describe("Chart", function() {

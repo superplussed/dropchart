@@ -1,6 +1,6 @@
 define(['jquery', './dropchart/lib/utils'], function($, utils) {
   var utilsSpec = {
-    runTests: function() {
+    run: function() {
       var assert = chai.assert;
         describe('utils', function() {
           describe('#isBlank', function() {
@@ -110,14 +110,12 @@ define(['jquery', './dropchart/lib/utils'], function($, utils) {
 
           describe('#getDimensions', function(){
             it('it should provide the dimensions of a div element', function() {
+              debugger;
               $("#histogram")
                 .css("height",  200)
                 .css("width", 400);
               assert.equal(utils.getDimensions("#histogram").width, 400);
               assert.equal(utils.getDimensions("#histogram").height, 200);
-               $("#histogram")
-                .css("width", "auto")
-                .css("height", "auto");
             });
 
           });

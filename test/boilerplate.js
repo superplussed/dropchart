@@ -3,7 +3,7 @@ define(['jquery', 'dropchart'], function($, dropchart) {
   var expect = chai.expect;
   var specName = {
 
-    runTests: function() {
+    run: function() {
       describe('ClassName', function() {
 
         describe('#functionName', function() {

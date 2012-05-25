@@ -1,12 +1,12 @@
 define(['jquery', 'dropchart'], function($, dropchart) {
   
   var expect = chai.expect;
-  var specName = {
+  var coordSpec = {
 
-    runTests: function() {
-      describe('ClassName', function() {
+    run: function() {
+      describe('Coord', function() {
 
-        describe('#functionName', function() {
+        describe('#x', function() {
 
           it ('should', function() {
 
@@ -20,7 +20,7 @@ define(['jquery', 'dropchart'], function($, dropchart) {
 
   };
 
-  return specName;
+  return coordSpec;
 
 });
 
