@@ -110,7 +110,6 @@ define(['jquery', './dropchart/lib/utils'], function($, utils) {
 
           describe('#getDimensions', function(){
             it('it should provide the dimensions of a div element', function() {
-              debugger;
               $("#histogram")
                 .css("height",  200)
                 .css("width", 400);

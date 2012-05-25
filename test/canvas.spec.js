@@ -11,8 +11,13 @@ define(['dropchart'], function(dropchart) {
           this.canvas = new dropchart.Canvas($("#histogram"), {
             width: 400,
             height: 200,
-            margin: [44, 33, 22, 11]}
-          );
+            margin: {
+              top: 44,
+              right: 33,
+              bottom: 22,
+              left: 11
+            }
+          });
           done();
         });
 
@@ -21,14 +26,14 @@ define(['dropchart'], function(dropchart) {
             $("#histogram").should.have('svg');
           });
 
-          it ('should set the correct dimensions for the div container', function() {
+          it ('should set the div container to width and height', function() {
             $("#histogram").css("width").should.equal("400px");
             $("#histogram").css("height").should.equal("200px");
           });
 
-          it ('should set the correct dimensions for the svg container', function() {
-            $("#histogram").css("width").should.equal("400px");
-            $("#histogram").css("height").should.equal("200px");
+          it ('should set the svg container to width and height minus margins', function() {
+            $("#histogram").children('svg').css("width").should.equal("356px");
+            $("#histogram").children('svg').css("height").should.equal("134px");
           });
 
         });

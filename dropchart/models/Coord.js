@@ -14,22 +14,22 @@
   };
 
   Coord.prototype.formatValue = function(val, axis) {
-    if (typeof(val) === 'string' && val.substr(-1) === '%') {
-      return val;
-    } else if (this.options.usePerc) {
+    if (typeof(val) === 'number' && this.options.usePerc) {
       return this.floatToPercOfContainer(val, axis);
+    } else {
+      return val;
     }
   };
 
-  Coord.prototype.translateX = function(val) {
-    return this.translateValue(val, 'x');
+  Coord.prototype.xToFloat = function(val) {
+    return this.toFloat(val, 'x');
   };
 
-  Coord.prototype.translateY = function(val) {
-    return this.translateValue(val, 'y');
+  Coord.prototype.yToFloat = function(val) {
+    return this.toFloat(val, 'y');
   };
 
-  Coord.prototype.translateValue = function(val, axis) {
+  Coord.prototype.toFloat = function(val, axis) {
     var that = this;
     if (isNaN(val)) {
       return 0;
