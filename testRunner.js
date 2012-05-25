@@ -3,6 +3,7 @@ define(['jquery', 'test', 'dropchart'], function($, test, dropchart) {
     initialize: function() {
       mocha.setup('bdd');
       self.prepareTest(test.utilsSpec.run);
+      self.prepareTest(test.coordSpec.run);
       self.prepareTest(test.canvasSpec.run);
       mocha.run();
     },

@@ -20,10 +20,12 @@ require.config({
   urlArgs: 'uncache=' + (+new Date())
 });
 
-define('dropchart', ['order!jquery', 'order!jquerySVG', 'uiDropchart', 'Canvas'], function($, jsSVG, uiDropchart, Canvas) {
+define('dropchart', ['order!jquery', 'order!jquerySVG', 'uiDropchart', 'Canvas', 'Coord'],
+  function($, jsSVG, uiDropchart, Canvas, Coord) {
   return {
     name: 'dropchart',
     dropchart: uiDropchart,
-    Canvas: Canvas
+    Canvas: Canvas,
+    Coord: Coord
   };
 });

@@ -6,9 +6,9 @@ define(['dropchart'], function(dropchart) {
     run: function() {
       describe('Canvas', function() {
 
-
         before(function(done){
           this.canvas = new dropchart.Canvas($("#histogram"), {
+            userPerc: true,
             width: 400,
             height: 200,
             margin: {
