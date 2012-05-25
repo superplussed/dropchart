@@ -3,20 +3,8 @@ define('Canvas', ['Coord', 'utils', 'jquery', 'jquerySVG'], function(Coord, util
   function Canvas(el, options) {
     console.log('init Canvas');
 
-    this.defaultOptions = {
-      usePerc: true,
-      width: "90%",
-      height: 200,
-      margin: {
-        top: 20,
-        right: 20,
-        bottom: 40,
-        left: 80
-      }
-    };
-
     this.el = el;
-    this.options = $.extend(this.defaultOptions, options);
+    this.options = options;
     this.coord = new Coord(options);
     $(el).svg();
     this.svg = $(this.el).children('svg');

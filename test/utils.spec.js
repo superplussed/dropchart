@@ -61,7 +61,7 @@ define(['jquery', './dropchart/lib/utils'], function($, utils) {
               assert.equal(utils.percToFloat("77%", 301), 231.77);
             });
 
-            it('should work with up to 2 decimal places', function() {
+            it('should work with float percentages', function() {
               assert.equal(utils.percToFloat("2.5%", 400), 10);
             });
 
@@ -120,6 +120,11 @@ define(['jquery', './dropchart/lib/utils'], function($, utils) {
               assert.equal(utils.getDimensions("#histogram").width, 400);
               assert.equal(utils.getDimensions("#histogram").height, 200);
             });
+
+            it('it should provide the dimensions of a svg element');
+              //assert.equal(utils.getDimensions("#histogram").width, 400);
+              //assert.equal(utils.getDimensions("#histogram").height, 200);
+
 
           });
 

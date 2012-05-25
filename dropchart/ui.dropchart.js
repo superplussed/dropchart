@@ -1,4 +1,23 @@
-define( "ui.dropchart.js", ["order!jquery", 'order!jqueryUI', 'order!jquerySVG', 'Canvas', 'Axis', 'SvgElement'], function ($, jUI, jSVG, Canvas, Axis, SvgElement) {
+define( "ui.dropchart.js",
+  ["order!jquery", 'order!jqueryUI', 'order!jquerySVG', 'Canvas', 'xAxis', 'SvgElement'],
+  function ($, jUI, jSVG, Canvas, xAxis, SvgElement) {
+
+  var defaultFont = {
+    color: "#000",
+    opacity: 1,
+    size: "12px",
+    align: "center",
+    offsetY: 0,
+    offsetX: 0
+  };
+
+  var defaultLabel = {
+    radius: 0,
+    opacity: 1,
+    color: "#DDD",
+    strokeColor: "#FFF",
+    strokeWidth: 2
+  };
 
   $.widget( "ui.dropchart", {
 
@@ -7,6 +26,28 @@ define( "ui.dropchart.js", ["order!jquery", 'order!jqueryUI', 'order!jquerySVG',
       addMouseoverAction: true,
       showPopoverOnMouseover: false,
       popoverRemainsOnClick: false,
+
+      canvas: {
+        usePerc: true,
+        width: "90%",
+        height: 200,
+        margin: {
+          top: 20,
+          right: 20,
+          bottom: 40,
+          left: 80
+        }
+      },
+      xAxis: {
+        show: true,
+        useCount: true,
+        useLabels: true,
+        'stroke-color': "#000",
+        'stroke-width': 2,
+        position: "80%",
+        font: defaultFont,
+        labels: defaultLabel
+      },
 
       showYAxis: true,
       yAxisPosition: 60,
@@ -92,7 +133,8 @@ define( "ui.dropchart.js", ["order!jquery", 'order!jqueryUI', 'order!jquerySVG',
     },
            
     _create: function () {
-      this.canvas = new Canvas(this.element, this.options);
+      this.canvas = new Canvas(this.element, this.options.canvas);
+      this.xAxis = new xAxis(this.canvas, this.options.xAxis);
     },
 
            

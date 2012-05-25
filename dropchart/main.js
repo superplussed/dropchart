@@ -6,6 +6,8 @@ require.config({
     uiDropchart: './dropchart/ui.dropchart',
     utils: './dropchart/lib/utils',
     Axis: './dropchart/models/Axis',
+    xAxis: './dropchart/models/xAxis',
+    yAxis: './dropchart/models/yAxis',
     Chart: './dropchart/models/Chart',
     Coord: './dropchart/models/Coord',
     SvgElement: './dropchart/models/SvgElement',
@@ -20,12 +22,13 @@ require.config({
   urlArgs: 'uncache=' + (+new Date())
 });
 
-define('dropchart', ['order!jquery', 'order!jquerySVG', 'uiDropchart', 'Canvas', 'Coord'],
-  function($, jsSVG, uiDropchart, Canvas, Coord) {
+define('dropchart', ['order!jquery', 'order!jquerySVG', 'uiDropchart', 'Canvas', 'Coord', 'xAxis'],
+  function($, jsSVG, uiDropchart, Canvas, Coord, xAxis) {
   return {
     name: 'dropchart',
     dropchart: uiDropchart,
     Canvas: Canvas,
-    Coord: Coord
+    Coord: Coord,
+    xAxis: xAxis
   };
 });

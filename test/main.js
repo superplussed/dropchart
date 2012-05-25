@@ -4,18 +4,19 @@ require.config({
     testRunner: './test/testRunner',
     utilsSpec: './test/utils.spec',
     canvasSpec: './test/canvas.spec',
-    coordSpec: './test/coord.spec'
+    coordSpec: './test/coord.spec',
+    xAxisSpec: './test/xAxis.spec'
   },
   urlArgs: 'uncache=' + (+new Date())
 });
 
-define('test', ['utilsSpec', 'canvasSpec', 'coordSpec'], function(utilsSpec, canvasSpec, coordSpec) {
+define('test', ['utilsSpec', 'canvasSpec', 'coordSpec', 'xAxisSpec'],
+  function(utilsSpec, canvasSpec, coordSpec, xAxisSpec) {
   return {
     name: 'test',
     utilsSpec: utilsSpec,
     canvasSpec: canvasSpec,
-    coordSpec: coordSpec
+    coordSpec: coordSpec,
+    xAxisSpec: xAxisSpec
   };
 });
-
-//  svgElementSpec: require("./svgElement.spec")

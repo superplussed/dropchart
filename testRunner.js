@@ -5,6 +5,7 @@ define(['jquery', 'test', 'dropchart'], function($, test, dropchart) {
       self.prepareTest(test.utilsSpec.run);
       self.prepareTest(test.coordSpec.run);
       self.prepareTest(test.canvasSpec.run);
+      self.prepareTest(test.xAxisSpec.run);
       mocha.run();
     },
     prepareTest: function(runTest) {
@@ -13,6 +14,7 @@ define(['jquery', 'test', 'dropchart'], function($, test, dropchart) {
         'width': '',
         'height': ''
       });
+      $("#histogram").children().remove();
     }
   };
   var self = testRunner;

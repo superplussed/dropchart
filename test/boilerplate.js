@@ -1,10 +1,15 @@
 define(['jquery', 'dropchart'], function($, dropchart) {
   
-  var expect = chai.expect;
+  var should = chai.should();
   var specName = {
 
     run: function() {
       describe('ClassName', function() {
+
+        before(function(done){
+  
+          done();
+        });
 
         describe('#functionName', function() {
 
