@@ -1,15 +1,21 @@
 define(['jquery', 'test', 'dropchart'], function($, test, dropchart) {
   var testRunner = {
     initialize: function() {
+      var i, specs = [
+        test.utilsSpec,
+        test.coordSpec,
+        test.canvasSpec,
+        test.scaleSpec,
+        test.xAxisSpec
+      ];
       mocha.setup('bdd');
-      self.prepareTest(test.utilsSpec.run);
-      self.prepareTest(test.coordSpec.run);
-      self.prepareTest(test.canvasSpec.run);
-      self.prepareTest(test.xAxisSpec.run);
+      for (i = 0; i <= specs.length - 1; i ++) {
+        self.prepareTest(specs[i]);
+      }
       mocha.run();
     },
-    prepareTest: function(runTest) {
-      runTest();
+    prepareTest: function(spec) {
+      spec.run();
       $("#histogram").css({
         'width': '',
         'height': ''

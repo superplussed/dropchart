@@ -3,7 +3,6 @@ define('xAxis', ['utils', 'jquery', 'jquerySVG'], function(utils, $) {
   function xAxis(id, options) {
     console.log('init xAxis');
 
-    console.log('init xAxis');
     this.options = options;
     this.svg = $(id).svg('get');
     if (this.options.show) {
