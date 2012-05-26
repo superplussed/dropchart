@@ -6,7 +6,6 @@ define('xAxis', ['Coord', 'utils', 'jquery', 'jquerySVG'], function(Coord, utils
     this.args = args;
     this.data = args.data;
     this.svg = $('#' + this.args.canvas.id).svg('get');
-    this.root = this.svg.getElementById(this.args.canvas.id + "-root");
     this.coord = new Coord(this.args);
     this.createScale();
     if (this.args.xAxis.show) {
@@ -27,7 +26,9 @@ define('xAxis', ['Coord', 'utils', 'jquery', 'jquerySVG'], function(Coord, utils
   };
 
   xAxis.prototype.drawLine = function() {
-    this.xAxisGroup = this.svg.group(this.root, "x-axis");
+    this.xAxisGroup = this.svg.group("x-axis", {
+      transform: "translate(10, 10)"
+    });
     this.svg.line(this.xAxisGroup, 0, this.args.xAxis.position, "100%", this.args.xAxis.position,
       {
         'class': "x-axis-line",
