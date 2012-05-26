@@ -6,7 +6,7 @@
     this.data = args.data;
 
     this._toPerc = function(val, axis) {
-      if (typeof(val) === 'number' && this.args.usePerc) {
+      if (typeof(val) === 'number' && this.args.canvas.usePerc) {
         return this._floatToPercOfContainer(val, axis);
       } else {
         return val;
@@ -24,7 +24,7 @@
     };
 
     this._getPixels = function(axis) {
-      return (axis === 'y' ? this.args.height : this.args.width);
+      return (axis === 'y' ? this.args.canvas.height : this.args.canvas.width);
     };
 
     this._percToFloatOfContainer =  function(val, axis) {

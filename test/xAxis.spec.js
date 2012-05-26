@@ -15,12 +15,17 @@ define(['jquery', 'dropchart'], function($, dropchart) {
               width: 400,
               height: 200,
               margin: {
-                top: 0,
-                right: 0,
-                bottom: 0,
-                left: 0
+                top: 10,
+                right: 10,
+                bottom: 10,
+                left: 10
               }
-            }
+            },
+            data: [
+              {x: "foo", y: 100},
+              {x: "bar", y: 110},
+              {x: "baz", y: 180}
+            ]
           };
           this.canvas = new dropchart.Canvas(this.args);
           done();
@@ -34,27 +39,24 @@ define(['jquery', 'dropchart'], function($, dropchart) {
 
         describe('#initialize', function() {
 
-          describe('options.show = true', function() {
+          describe('args.xAxis.show = true', function() {
 
-            it ('should draw a line for the X Axis', function() {
+            beforeEach(function(done) {
               this.args.xAxis = {
                 show: true,
                 strokeColor: "#000",
                 strokeWidth: 2,
                 position: "80%"
               };
-              var xAxis = new dropchart.xAxis(this.args);
+              new dropchart.xAxis(this.args);
+              done();
+            });
+
+            it ('should draw a line for the X axis', function() {
               $("#histogram").should.have('line');
             });
 
-            it ('should draw a X Axis line with the correct attributes', function() {
-              this.args.xAxis = {
-                show: true,
-                strokeColor: "#000",
-                strokeWidth: 2,
-                position: "80%"
-              };
-              var xAxis = new dropchart.xAxis(this.args);
+            it ('should draw a X axis line with the correct attributes', function() {
               var line = $('#histogram').find('line');
               if (line) {
                 line.attr('stroke').should.equal("#000");
@@ -70,14 +72,46 @@ define(['jquery', 'dropchart'], function($, dropchart) {
 
           });
 
-          describe('options.show = false', function() {
+          describe('args.xAxis.show = false', function() {
 
-            it ('should not draw a line for the X Axis', function() {
+            it ('should not draw a line for the X axis', function() {
               this.args.xAxis = {
                 show: false
               };
               var xAxis = new dropchart.xAxis(this.args);
               $('#histogram').should.not.have('line');
+            });
+
+          });
+
+          describe('args.xAxis.useTicks = true', function() {
+
+            beforeEach(function(done) {
+              this.args.xAxis = {
+                show: true,
+                strokeColor: "#000",
+                strokeWidth: 2,
+                position: "80%",
+                useTicks: true,
+                ticks: {
+                  opacity: 1,
+                  strokeColor: "#000",
+                  strokeWidth: 1,
+                  length: 10
+                }
+              };
+              new dropchart.xAxis(this.args);
+              done();
+            });
+
+            it ('should draw the correct number of ticks on the X axis', function() {
+              $('line.x-axis-tick').length.should.equal(3);
+            });
+
+            it ('should place the ticks at the correct points on the axis', function() {
+              $('line.x-axis-tick:eq(0)').attr("x1").should.equal("66.67");
+              $('line.x-axis-tick:eq(1)').attr("x1").should.equal("200");
+              $('line.x-axis-tick:eq(2)').attr("x1").should.equal("333.33");
             });
 
           });
