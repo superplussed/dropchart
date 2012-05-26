@@ -35,8 +35,8 @@ define(['dropchart'], function(dropchart) {
           });
 
           it ('should set the svg container to width and height minus margins', function() {
-            $("#histogram").children('svg').css("width").should.equal("356px");
-            $("#histogram").children('svg').css("height").should.equal("134px");
+            $("#histogram").children('.dc-inner-container').css("width").should.equal("356px");
+            $("#histogram").children('.dc-inner-container').css("height").should.equal("134px");
           });
 
         });

@@ -12,8 +12,16 @@ define(['jquery', 'dropchart'], function($, dropchart) {
             this.coord = new dropchart.Coord({
               canvas: {
                 width: 400,
+                innerWidth: 400,
                 height: 200,
-                usePerc: true
+                innerHeight: 200,
+                usePerc: true,
+                margin: {
+                  top: 0,
+                  right: 0,
+                  bottom: 0,
+                  left: 0
+                }
               }
             },
             [

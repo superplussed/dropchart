@@ -126,9 +126,9 @@ define(['jquery', 'dropchart'], function($, dropchart) {
             });
 
             it ('should place the ticks at the correct points on the axis', function() {
-              $('line.x-axis-tick:eq(0)').attr("x1").should.equal("66.67");
-              $('line.x-axis-tick:eq(1)').attr("x1").should.equal("200");
-              $('line.x-axis-tick:eq(2)').attr("x1").should.equal("333.33");
+              $('line.x-axis-tick:eq(0)').attr("x1").should.equal("63.33");
+              $('line.x-axis-tick:eq(1)').attr("x1").should.equal("190");
+              $('line.x-axis-tick:eq(2)').attr("x1").should.equal("316.67");
             });
 
           });

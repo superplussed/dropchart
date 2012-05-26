@@ -5,7 +5,7 @@ define('xAxis', ['Coord', 'utils', 'jquery', 'jquerySVG'], function(Coord, utils
 
     this.args = args;
     this.data = args.data;
-    this.svg = $('#' + this.args.canvas.id).svg('get');
+    this.svg = $('#' + this.args.canvas.id + "-inner").svg('get');
     this.coord = new Coord(this.args);
     this.createScale();
     if (this.args.xAxis.show) {
@@ -26,15 +26,14 @@ define('xAxis', ['Coord', 'utils', 'jquery', 'jquerySVG'], function(Coord, utils
   };
 
   xAxis.prototype.drawLine = function() {
-    this.xAxisGroup = this.svg.group("x-axis", {
-      transform: "translate(10, 10)"
-    });
+    this.xAxisGroup = this.svg.group("x-axis");
     this.svg.line(this.xAxisGroup, 0, this.args.xAxis.position, "100%", this.args.xAxis.position,
       {
         'class': "x-axis-line",
         stroke: this.args.xAxis.strokeColor,
         'stroke-width': this.args.xAxis.strokeWidth,
-        opacity: this.args.xAxis.opacity
+        opacity: this.args.xAxis.opacity,
+        'shape-rendering': 'crispedges'
       });
   };
 
@@ -48,7 +47,8 @@ define('xAxis', ['Coord', 'utils', 'jquery', 'jquerySVG'], function(Coord, utils
         'class': "x-axis-tick",
         stroke: this.args.xAxis.ticks.strokeColor,
         'stroke-width': this.args.xAxis.ticks.strokeWidth,
-        opacity: this.args.xAxis.ticks.opacity
+        opacity: this.args.xAxis.ticks.opacity,
+        'shape-rendering': 'crispedges'
       });
     }
   };
