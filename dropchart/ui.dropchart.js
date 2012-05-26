@@ -134,7 +134,7 @@ define( "ui.dropchart.js",
            
     _create: function () {
       this.canvas = new Canvas(this.element, this.options.canvas);
-      this.xAxis = new xAxis(this.canvas, this.options.xAxis);
+      this.xAxis = new xAxis(this.canvas, this.options.xAxis, this.options.data);
     },
 
            

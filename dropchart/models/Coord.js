@@ -1,11 +1,12 @@
  define('Coord', ['utils', 'jquery'], function(utils, $) {
 
-  function Coord( options ) {
+  function Coord( args ) {
     console.log( 'init Coord' );
-    this.options = options;
+    this.args = args;
+    this.data = args.data;
 
     this._toPerc = function(val, axis) {
-      if (typeof(val) === 'number' && this.options.usePerc) {
+      if (typeof(val) === 'number' && this.args.usePerc) {
         return this._floatToPercOfContainer(val, axis);
       } else {
         return val;
@@ -23,7 +24,7 @@
     };
 
     this._getPixels = function(axis) {
-      return (axis === 'y' ? this.options.height : this.options.width);
+      return (axis === 'y' ? this.args.height : this.args.width);
     };
 
     this._percToFloatOfContainer =  function(val, axis) {

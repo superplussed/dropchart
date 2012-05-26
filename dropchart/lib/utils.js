@@ -1,11 +1,27 @@
 define(function() {
   var utils = {
-    TOP: 0,
-    RIGHT: 1,
-    BOTTOM: 2,
-    LEFT: 3,
     isBlank: function(el) {
       return (!el && el !== 0) || el === '';
+    },
+
+    getMinFromArrayOfObj: function(ary, field) {
+      var min = Infinity;
+      for (var i = 0; i <= ary.length - 1; i ++) {
+        if (ary[i][field] < min) {
+          min = ary[i][field];
+        }
+      }
+      return min;
+    },
+
+    getMaxFromArrayOfObj: function(ary, field) {
+      var max = Number.NEGATIVE_INFINITY;
+      for (var i = 0; i <= ary.length - 1; i ++) {
+        if (ary[i][field] > max) {
+          max = ary[i][field];
+        }
+      }
+      return max;
     },
 
     percToFloat: function(val, pixels) {

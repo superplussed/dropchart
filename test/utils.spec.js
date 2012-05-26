@@ -112,6 +112,32 @@ define(['jquery', './dropchart/lib/utils'], function($, utils) {
 
           });
 
+          describe('#getMinFromArrayOfObj', function(){
+
+            it('should find the min value of a given field', function() {
+               var data = [
+                {x: 1, y: -99},
+                {x: 2, y: 3},
+                {x: 3, y: -999}
+              ];
+              assert.equal(utils.getMinFromArrayOfObj(data, 'y'), -999);
+            });
+
+          });
+
+          describe('#getMaxFromArrayOfObj', function(){
+
+            it('should find the max value of a given field', function() {
+               var data = [
+                {x: 1, y: -99},
+                {x: 2, y: 3},
+                {x: 3, y: -999}
+              ];
+              assert.equal(utils.getMaxFromArrayOfObj(data, 'y'), 3);
+            });
+
+          });
+
           describe('#getDimensions', function(){
             it('it should provide the dimensions of a div element', function() {
               $("#histogram")

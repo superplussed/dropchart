@@ -5,20 +5,18 @@ require.config({
     utilsSpec: './test/utils.spec',
     canvasSpec: './test/canvas.spec',
     coordSpec: './test/coord.spec',
-    xAxisSpec: './test/xAxis.spec',
-    scaleSpec: './test/scale.spec'
+    xAxisSpec: './test/xAxis.spec'
   },
   urlArgs: 'uncache=' + (+new Date())
 });
 
-define('test', ['utilsSpec', 'canvasSpec', 'coordSpec', 'xAxisSpec', 'scaleSpec'],
-  function(utilsSpec, canvasSpec, coordSpec, xAxisSpec, scaleSpec) {
+define('test', ['utilsSpec', 'canvasSpec', 'coordSpec', 'xAxisSpec'],
+  function(utilsSpec, canvasSpec, coordSpec, xAxisSpec) {
   return {
     name: 'test',
     utilsSpec: utilsSpec,
     canvasSpec: canvasSpec,
     coordSpec: coordSpec,
-    xAxisSpec: xAxisSpec,
-    scaleSpec: scaleSpec
+    xAxisSpec: xAxisSpec
   };
 });

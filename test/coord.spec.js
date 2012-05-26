@@ -13,7 +13,11 @@ define(['jquery', 'dropchart'], function($, dropchart) {
               width: 400,
               height: 200,
               usePerc: true
-            });
+            },
+            [
+              {x: 0, y: 200},
+              {x: 1, y: 100}
+            ]);
             done();
           });
 
