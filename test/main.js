@@ -6,8 +6,8 @@ require.config({
     canvasSpec: './test/canvas.spec',
     coordSpec: './test/coord.spec',
     xAxisSpec: './test/xAxis.spec'
-  },
-  urlArgs: 'uncache=' + (+new Date())
+  }
+  //,urlArgs: 'uncache=' + (+new Date())
 });
 
 define('test', ['utilsSpec', 'canvasSpec', 'coordSpec', 'xAxisSpec'],

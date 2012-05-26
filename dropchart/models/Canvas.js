@@ -6,7 +6,7 @@ define('Canvas', ['Coord', 'utils', 'jquery', 'jquerySVG'], function(Coord, util
     this.coord = new Coord(args);
     this.el = $("#" + this.args.canvas.id);
     $(this.el).svg();
-    this.svg = $(this.el).children('svg');
+    this.svg = $(this.el).svg('get');
     this.setCanvasDimensions();
   }
 
@@ -14,11 +14,18 @@ define('Canvas', ['Coord', 'utils', 'jquery', 'jquerySVG'], function(Coord, util
     this.args.canvas.innerWidth = this.coord.x( this.coord.xToFloat( this.args.canvas.width ) - this.coord.xToFloat( this.args.canvas.margin.left ) - this.coord.xToFloat( this.args.canvas.margin.right ));
     this.args.canvas.innerHeight = this.coord.y( this.coord.yToFloat( this.args.canvas.height ) - this.coord.yToFloat( this.args.canvas.margin.top ) - this.coord.yToFloat( this.args.canvas.margin.bottom ));
     $( this.el )
-      .attr( "width", this.coord.x( this.args.canvas.width ) )
-      .attr( "height", this.coord.y( this.args.canvas.height ) );
-    $( this.svg )
-      .attr( "width", this.args.canvas.innerWidth )
-      .attr( "height", this.args.canvas.innerHeight );
+      .css( "width", this.coord.x( this.args.canvas.width ) )
+      .css( "height", this.coord.y( this.args.canvas.height ) );
+
+    $(this.el).find('svg')
+      .attr("width", this.args.canvas.innerWidth)
+      .attr("height", this.args.canvas.innerHeight);
+
+    if (!this.root) {
+      this.root = this.svg.group($('svg'), this.args.canvas.id + "-root");
+    }
+
+    $(this.root).attr("transform", "translate(" + (this.coord.xToFloat(this.args.canvas.width) - this.coord.xToFloat(this.args.canvas.innerWidth)) + ", " + (this.coord.yToFloat(this.args.canvas.height) - this.coord.yToFloat(this.args.canvas.innerHeight)) + ")");
   };
 
   return Canvas;

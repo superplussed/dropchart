@@ -6,7 +6,7 @@ define('xAxis', ['Coord', 'utils', 'jquery', 'jquerySVG'], function(Coord, utils
     this.args = args;
     this.data = args.data;
     this.el = $("#" + args.canvas.id);
-    this.svg = $(this.el).svg('get');
+    this.root = $(this.el + "-root").svg('get');
     this.coord = new Coord(this.args);
     this.createScale();
     if (this.args.xAxis.show) {
@@ -21,7 +21,7 @@ define('xAxis', ['Coord', 'utils', 'jquery', 'jquerySVG'], function(Coord, utils
   }
 
   xAxis.prototype.drawLine = function() {
-    this.svg.line(0, this.args.xAxis.position, "100%", this.args.xAxis.position,
+    this.root.line(0, this.args.xAxis.position, "100%", this.args.xAxis.position,
       {
         'class': "x-axis-line",
         stroke: this.args.xAxis.strokeColor,
@@ -35,7 +35,7 @@ define('xAxis', ['Coord', 'utils', 'jquery', 'jquerySVG'], function(Coord, utils
       yPos = this.coord.yToFloat(this.args.xAxis.position),
       i;
     for (i = 0; i <= this.max; i ++) {
-      this.svg.line(this.scale[i].coord,  yPos + tickLength, this.scale[i].coord, yPos - tickLength,
+      this.root.line(this.scale[i].coord,  yPos + tickLength, this.scale[i].coord, yPos - tickLength,
       {
         'class': "x-axis-tick",
         stroke: this.args.xAxis.ticks.strokeColor,

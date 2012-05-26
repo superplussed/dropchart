@@ -18,8 +18,8 @@ require.config({
     Linechart: './dropchart/models/Linechart',
     Popover: './dropchart/models/Popover',
     require: '../vendor/require'
-  },
-  urlArgs: 'uncache=' + (+new Date())
+  }
+  //,urlArgs: 'uncache=' + (+new Date())
 });
 
 define('dropchart', ['order!jquery', 'order!jquerySVG', 'uiDropchart', 'Canvas', 'Coord', 'xAxis'],
