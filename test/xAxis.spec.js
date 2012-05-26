@@ -27,6 +27,7 @@ define(['jquery', 'dropchart'], function($, dropchart) {
         });
 
         beforeEach(function(done) {
+          this.args.xAxis = {};
           $("#histogram").find('svg').children().remove();
           done();
         });
@@ -43,13 +44,28 @@ define(['jquery', 'dropchart'], function($, dropchart) {
                 position: "80%"
               };
               var xAxis = new dropchart.xAxis(this.args);
+              $("#histogram").should.have('line');
+            });
+
+            it ('should draw a X Axis line with the correct attributes', function() {
+              this.args.xAxis = {
+                show: true,
+                strokeColor: "#000",
+                strokeWidth: 2,
+                position: "80%"
+              };
+              var xAxis = new dropchart.xAxis(this.args);
               var line = $('#histogram').find('line');
-              line.attr('stroke').should.equal("#000");
-              line.attr('stroke-width').should.equal("2");
-              line.attr('x1').should.equal("0");
-              line.attr('x2').should.equal("100%");
-              line.attr('y1').should.equal("80%");
-              line.attr('y2').should.equal("80%");
+              if (line) {
+                line.attr('stroke').should.equal("#000");
+                line.attr('stroke-width').should.equal("2");
+                line.attr('x1').should.equal("0");
+                line.attr('x2').should.equal("100%");
+                line.attr('y1').should.equal("80%");
+                line.attr('y2').should.equal("80%");
+              } else {
+                $("#histogram").should.have('line');
+              }
             });
 
           });
@@ -57,10 +73,11 @@ define(['jquery', 'dropchart'], function($, dropchart) {
           describe('options.show = false', function() {
 
             it ('should not draw a line for the X Axis', function() {
-              var xAxis = new dropchart.xAxis("#histogram", {
+              this.args.xAxis = {
                 show: false
-              });
-              $('#histogram').find('line').length.should.equal(0);
+              };
+              var xAxis = new dropchart.xAxis(this.args);
+              $('#histogram').should.not.have('line');
             });
 
           });

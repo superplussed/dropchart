@@ -8,7 +8,7 @@ define('xAxis', ['Coord', 'utils', 'jquery', 'jquerySVG'], function(Coord, utils
     this.el = $("#" + args.canvas.id);
     this.svg = $(this.el).svg('get');
     this.coord = new Coord(this.args);
-    if (this.args.show) {
+    if (this.args.xAxis.show) {
      this.drawLine();
     }
   }
