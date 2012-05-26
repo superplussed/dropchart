@@ -11,6 +11,7 @@ define(['jquery', 'test', 'dropchart'], function($, test, dropchart) {
 
       mocha.setup('bdd');
       for (i = 0; i <= specs.length - 1; i ++) {
+        console.log("test: " +  specs[i].name);
         self.prepareTest(specs[i]);
       }
       mocha.run();

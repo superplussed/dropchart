@@ -1,5 +1,6 @@
 define(['jquery', './dropchart/lib/utils'], function($, utils) {
   var utilsSpec = {
+    name: "utils.spec",
     run: function() {
       var assert = chai.assert;
         describe('utils', function() {

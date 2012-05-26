@@ -2,7 +2,7 @@ define(['jquery', 'dropchart'], function($, dropchart) {
   
   var should = chai.should();
   var coordSpec = {
-
+    name: "coor.spec",
     run: function() {
       describe('Coord', function() {
 

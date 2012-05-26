@@ -2,7 +2,7 @@ define(['jquery', 'dropchart'], function($, dropchart) {
   
   var should = chai.should();
   var xAxisSpec = {
-
+    name: "xAxis.spec",
     run: function() {
 
       describe('xAxis', function() {
@@ -32,9 +32,26 @@ define(['jquery', 'dropchart'], function($, dropchart) {
         });
 
         beforeEach(function(done) {
+          if (this.xAxis) {
+            this.xAxis.destroy();
+          }
           this.args.xAxis = {};
-          $("#histogram").find('svg').children().remove();
           done();
+        });
+
+        describe ("#destroy", function() {
+          it ('should remove the xAxis from the canvas', function() {
+            this.args.xAxis = {
+              show: true,
+              strokeColor: "#000",
+              strokeWidth: 2,
+              position: "80%"
+            };
+            this.xAxis = new dropchart.xAxis(this.args);
+            $("#histogram").should.have('line');
+            this.xAxis.destroy();
+            $("#histogram").should.not.have('line');
+          });
         });
 
         describe('#initialize', function() {
@@ -48,7 +65,7 @@ define(['jquery', 'dropchart'], function($, dropchart) {
                 strokeWidth: 2,
                 position: "80%"
               };
-              new dropchart.xAxis(this.args);
+              this.xAxis = new dropchart.xAxis(this.args);
               done();
             });
 
@@ -78,7 +95,7 @@ define(['jquery', 'dropchart'], function($, dropchart) {
               this.args.xAxis = {
                 show: false
               };
-              var xAxis = new dropchart.xAxis(this.args);
+              this.xAxis = new dropchart.xAxis(this.args);
               $('#histogram').should.not.have('line');
             });
 
@@ -100,7 +117,7 @@ define(['jquery', 'dropchart'], function($, dropchart) {
                   length: 10
                 }
               };
-              new dropchart.xAxis(this.args);
+              this.xAxis = new dropchart.xAxis(this.args);
               done();
             });
 

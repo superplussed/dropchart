@@ -5,8 +5,8 @@ define('xAxis', ['Coord', 'utils', 'jquery', 'jquerySVG'], function(Coord, utils
 
     this.args = args;
     this.data = args.data;
-    this.el = $("#" + args.canvas.id);
-    this.root = $(this.el + "-root").svg('get');
+    this.svg = $('#' + this.args.canvas.id).svg('get');
+    this.root = this.svg.getElementById(this.args.canvas.id + "-root");
     this.coord = new Coord(this.args);
     this.createScale();
     if (this.args.xAxis.show) {
@@ -20,8 +20,15 @@ define('xAxis', ['Coord', 'utils', 'jquery', 'jquerySVG'], function(Coord, utils
     }
   }
 
+  xAxis.prototype.destroy = function() {
+    if (this.xAxisGroup) {
+      $(this.xAxisGroup).remove();
+    }
+  };
+
   xAxis.prototype.drawLine = function() {
-    this.root.line(0, this.args.xAxis.position, "100%", this.args.xAxis.position,
+    this.xAxisGroup = this.svg.group(this.root, "x-axis");
+    this.svg.line(this.xAxisGroup, 0, this.args.xAxis.position, "100%", this.args.xAxis.position,
       {
         'class': "x-axis-line",
         stroke: this.args.xAxis.strokeColor,
@@ -35,7 +42,7 @@ define('xAxis', ['Coord', 'utils', 'jquery', 'jquerySVG'], function(Coord, utils
       yPos = this.coord.yToFloat(this.args.xAxis.position),
       i;
     for (i = 0; i <= this.max; i ++) {
-      this.root.line(this.scale[i].coord,  yPos + tickLength, this.scale[i].coord, yPos - tickLength,
+      this.svg.line(this.xAxisGroup, this.scale[i].coord,  yPos + tickLength, this.scale[i].coord, yPos - tickLength,
       {
         'class': "x-axis-tick",
         stroke: this.args.xAxis.ticks.strokeColor,
