@@ -43,17 +43,22 @@ define('yAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
   yAxis.prototype.drawTicks = function() {
     var tickLength = this.coord.yToFloat(this.args.yAxis.tick.length) / 2,
       xPos = this.coord.yToFloat(this.args.yAxis.position),
+      numTicks = this.args.yAxis.tick.num,
+      interval = this.args.canvas.innerHeight / numTicks,
+      dataPoint = 0,
+      that = this,
       i;
-    for (i = 0; i <= this.max; i ++) {
+    for (i = 1; i <= numTicks; i ++) {
       new Line({
         svg: this.svg,
         className: "y-axis-tick",
         parent: this.yAxisGroup,
-        y: this.scale[i].coord,
+        y: that.scale(dataPoint),
         x1: xPos + tickLength,
         x2: xPos - tickLength,
         style: this.args.yAxis.tick
       });
+      dataPoint += interval;
     }
   };
 
@@ -64,15 +69,9 @@ define('yAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
   yAxis.prototype.createScale = function() {
     var i,
       coord;
-    this.scale = [];
     this.min = utils.minFromArrayOfObj(this.data, 'y');
     this.max = utils.maxFromArrayOfObj(this.data, 'y');
     this.ratio = this.args.canvas.innerHeight / (this.max);
-    coord = 0;
-    for (i = this.min; i <= this.max; i ++) {
-      this.scale[i] = {x: i, coord: utils.roundNumber(coord, 2)};
-      coord += this.interval;
-    }
   };
 
   return yAxis;
