@@ -7,10 +7,9 @@ require.config({
     utils: './dropchart/lib/utils',
     fetch: './dropchart/lib/fetch',
     Axis: './dropchart/models/Axis',
-    Bar: './dropchart/models/Bar',
     Rect: './dropchart/models/Rect',
-    xAxis: './dropchart/models/xAxis',
-    yAxis: './dropchart/models/yAxis',
+    XAxis: './dropchart/models/XAxis',
+    YAxis: './dropchart/models/YAxis',
     Chart: './dropchart/models/Chart',
     Coord: './dropchart/models/Coord',
     Canvas: './dropchart/models/Canvas',
@@ -24,15 +23,15 @@ require.config({
   //,urlArgs: 'uncache=' + (+new Date())
 });
 
-define('dropchart', ['order!jquery', 'order!jquerySVG', 'uiDropchart', 'Canvas', 'Coord', 'xAxis', 'yAxis', 'Histogram'],
-  function($, jsSVG, uiDropchart, Canvas, Coord, xAxis, yAxis, Histogram) {
+define('dropchart', ['order!jquery', 'order!jquerySVG', 'uiDropchart', 'Canvas', 'Coord', 'XAxis', 'YAxis', 'Histogram'],
+  function($, jsSVG, uiDropchart, Canvas, Coord, XAxis, YAxis, Histogram) {
   return {
     name: 'dropchart',
     dropchart: uiDropchart,
     Canvas: Canvas,
     Coord: Coord,
-    xAxis: xAxis,
-    yAxis: yAxis,
+    XAxis: XAxis,
+    YAxis: YAxis,
     Histogram: Histogram
   };
 });

@@ -1,8 +1,8 @@
-define('yAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
+define('YAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
   function(Coord, Line, utils, fetch, $) {
 
-  function yAxis(args) {
-    console.log('init yAxis');
+  function YAxis(args) {
+    console.log('init YAxis');
 
     this.args = args;
     this.data = args.data;
@@ -21,13 +21,13 @@ define('yAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
     }
   }
 
-  yAxis.prototype.destroy = function() {
+  YAxis.prototype.destroy = function() {
     if (this.yAxisGroup) {
       $(this.yAxisGroup).remove();
     }
   };
 
-  yAxis.prototype.drawLine = function() {
+  YAxis.prototype.drawLine = function() {
     this.yAxisGroup = this.svg.group("y-axis");
     new Line({
       svg: this.svg,
@@ -40,7 +40,7 @@ define('yAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
     });
   };
 
-  yAxis.prototype.drawTicks = function() {
+  YAxis.prototype.drawTicks = function() {
     var tickLength = this.coord.yToFloat(this.args.yAxis.tick.length) / 2,
       xPos = this.coord.xToFloat(this.args.yAxis.position),
       numTicks = this.args.yAxis.tick.num,
@@ -62,11 +62,11 @@ define('yAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
     }
   };
 
-  yAxis.prototype.scale = function(val) {
+  YAxis.prototype.scale = function(val) {
     return val * this.ratio;
   };
 
-  yAxis.prototype.createScale = function() {
+  YAxis.prototype.createScale = function() {
     var i,
       coord;
     this.min = utils.minFromArrayOfObj(this.data, 'y');
@@ -74,5 +74,5 @@ define('yAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
     this.ratio = this.args.canvas.innerHeight / (this.max);
   };
 
-  return yAxis;
+  return YAxis;
 });

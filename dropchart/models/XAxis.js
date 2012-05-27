@@ -1,8 +1,8 @@
-define('xAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
+define('XAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
   function(Coord, Line, utils, fetch, $) {
 
-  function xAxis(args) {
-    console.log('init xAxis');
+  function XAxis(args) {
+    console.log('init XAxis');
 
     this.args = args;
     this.data = args.data;
@@ -20,13 +20,13 @@ define('xAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
     }
   }
 
-  xAxis.prototype.destroy = function() {
+  XAxis.prototype.destroy = function() {
     if (this.xAxisGroup) {
       $(this.xAxisGroup).remove();
     }
   };
 
-  xAxis.prototype.drawLine = function() {
+  XAxis.prototype.drawLine = function() {
     this.xAxisGroup = this.svg.group("x-axis");
     new Line({
       svg: this.svg,
@@ -39,7 +39,7 @@ define('xAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
     });
   };
 
-  xAxis.prototype.drawTicks = function() {
+  XAxis.prototype.drawTicks = function() {
     var tickLength = this.coord.yToFloat(this.args.xAxis.tick.length) / 2,
       yPos = this.coord.yToFloat(this.args.xAxis.position),
       i;
@@ -48,7 +48,7 @@ define('xAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
         svg: this.svg,
         className: "x-axis-tick",
         parent: this.xAxisGroup,
-        x: this.scale[i].coord,
+        x: this.scale(i).coord,
         y1: yPos + tickLength,
         y2: yPos - tickLength,
         style: this.args.xAxis.tick
@@ -56,19 +56,23 @@ define('xAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
     }
   };
 
-  xAxis.prototype.createScale = function() {
+  XAxis.prototype.scale = function(val) {
+    return this.scaleArray[val];
+  };
+
+  XAxis.prototype.createScale = function() {
     var i,
       coord;
-    this.scale = [];
+    this.scaleArray = [];
     this.min = 0;
     this.max = this.data.length - 1;
     this.interval = this.args.canvas.innerWidth / (this.args.data.length);
     coord = this.interval / 2;
     for (i = this.min; i <= this.max; i ++) {
-      this.scale[i] = {x: i, coord: utils.roundNumber(coord, 2)};
+      this.scaleArray[i] = {x: i, coord: utils.roundNumber(coord, 2)};
       coord += this.interval;
     }
   };
 
-  return xAxis;
+  return XAxis;
 });

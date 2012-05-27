@@ -1,6 +1,6 @@
 define( "ui.dropchart.js",
-  ["order!jquery", 'order!jqueryUI', 'order!jquerySVG', 'Canvas', 'xAxis'],
-  function ($, jUI, jSVG, Canvas, xAxis) {
+  ["order!jquery", 'order!jqueryUI', 'order!jquerySVG', 'Canvas', 'XAxis'],
+  function ($, jUI, jSVG, Canvas, XAxis) {
 
   var defaultFont = {
     color: "#000",
@@ -152,7 +152,7 @@ define( "ui.dropchart.js",
            
     _create: function () {
       this.canvas = new Canvas(this.element, this.options.canvas);
-      this.xAxis = new xAxis(this.canvas, this.options.xAxis, this.options.data);
+      this.xAxis = new XAxis(this.canvas, this.options.xAxis, this.options.data);
     },
 
            
