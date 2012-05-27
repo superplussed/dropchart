@@ -38,13 +38,26 @@ define(['jquery'], function(jquery) {
     xAxisWithTicks: function() {
       return $.extend({
         useTicks: true,
-        ticks: {
+        tick: {
           opacity: 1,
           strokeColor: "#000",
           strokeWidth: 1,
           length: 10
         }
       }, this.xAxis());
+    },
+    histogram: function() {
+      return {
+        bar: {
+          color: '#DDDDDD',
+          'stroke-color': '#000000',
+          'stroke-width': 2,
+          opacity: 1,
+          radius: 5,
+          widthModifier: 1
+        },
+        data: this.data()
+      };
     }
   };
   return argsFor;

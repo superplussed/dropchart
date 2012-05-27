@@ -1,14 +1,79 @@
-Coord.prototype.createScale = function(data) {
-    var i;
-    this.xScale = [];
-    this.yScale = [];
-    this.minX = 0;
-    this.maxX = this.data.length - 1;
-    this.minY = utils.getMinFromArrayOfObj(this.data, 'y');
-    this.maxY = utils.getMaxFromArrayOfObj(this.data, 'y');
-    this.xInterval = self.xToFloat(this.options.width) / this.maxX - 1;
-    this.yInterval = self.xToFloat(this.options.height) / this.yTicks - 1;
-    for (i = this.minX; i <= this.maxX; i ++) {
-      this.xScale[i] = {x: i, coord: 0};
+define('yAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
+  function(Coord, Line, utils, fetch, $) {
+
+  function yAxis(args) {
+    console.log('init yAxis');
+
+    this.args = args;
+    this.data = args.data;
+    this.svg = fetch.svg(args);
+    this.coord = new Coord(args);
+    this.createScale();
+
+    if (this.args.yAxis.show) {
+      this.drawLine();
+    }
+    if (this.args.yAxis.useTicks) {
+      this.drawTicks();
+    }
+    if (this.args.yAxis.useLabels) {
+      this.drawLabels();
+    }
+  }
+
+  yAxis.prototype.destroy = function() {
+    if (this.yAxisGroup) {
+      $(this.yAxisGroup).remove();
     }
   };
+
+  yAxis.prototype.drawLine = function() {
+    this.yAxisGroup = this.svg.group("y-axis");
+    new Line({
+      svg: this.svg,
+      className: "y-axis-line",
+      parent: this.yAxisGroup,
+      y1: 0,
+      y2: "100%",
+      x: this.args.yAxis.position,
+      style: this.args.yAxis
+    });
+  };
+
+  yAxis.prototype.drawTicks = function() {
+    var tickLength = this.coord.yToFloat(this.args.yAxis.tick.length) / 2,
+      xPos = this.coord.yToFloat(this.args.yAxis.position),
+      i;
+    for (i = 0; i <= this.max; i ++) {
+      new Line({
+        svg: this.svg,
+        className: "y-axis-tick",
+        parent: this.yAxisGroup,
+        y: this.scale[i].coord,
+        x1: xPos + tickLength,
+        x2: xPos - tickLength,
+        style: this.args.yAxis.tick
+      });
+    }
+  };
+
+  yAxis.prototype.scale = function(val) {
+    return val * this.ratio;
+  };
+
+  yAxis.prototype.createScale = function() {
+    var i,
+      coord;
+    this.scale = [];
+    this.min = utils.minFromArrayOfObj(this.data, 'y');
+    this.max = utils.maxFromArrayOfObj(this.data, 'y');
+    this.ratio = this.args.canvas.innerHeight / (this.max);
+    coord = 0;
+    for (i = this.min; i <= this.max; i ++) {
+      this.scale[i] = {x: i, coord: utils.roundNumber(coord, 2)};
+      coord += this.interval;
+    }
+  };
+
+  return yAxis;
+});

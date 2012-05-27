@@ -2,6 +2,7 @@ require.config({
   paths: {
     jquery: './vendor/jquery.1.7.2.min',
     argsFor: './test/helpers/argsFor',
+    stage: './test/helpers/stage',
     testRunner: './test/testRunner',
     utilsSpec: './test/utils.spec',
     canvasSpec: './test/canvas.spec',

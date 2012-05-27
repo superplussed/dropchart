@@ -4,7 +4,7 @@ define(function() {
       return (!el && el !== 0) || el === '';
     },
 
-    getMinFromArrayOfObj: function(ary, field) {
+    minFromArrayOfObj: function(ary, field) {
       var min = Infinity;
       for (var i = 0; i <= ary.length - 1; i ++) {
         if (ary[i][field] < min) {
@@ -14,7 +14,7 @@ define(function() {
       return min;
     },
 
-    getMaxFromArrayOfObj: function(ary, field) {
+    maxFromArrayOfObj: function(ary, field) {
       var max = Number.NEGATIVE_INFINITY;
       for (var i = 0; i <= ary.length - 1; i ++) {
         if (ary[i][field] > max) {

@@ -113,7 +113,7 @@ define(['jquery', './dropchart/lib/utils'], function($, utils) {
 
           });
 
-          describe('#getMinFromArrayOfObj', function(){
+          describe('#minFromArrayOfObj', function(){
 
             it('should find the min value of a given field', function() {
                var data = [
@@ -121,12 +121,12 @@ define(['jquery', './dropchart/lib/utils'], function($, utils) {
                 {x: 2, y: 3},
                 {x: 3, y: -999}
               ];
-              assert.equal(utils.getMinFromArrayOfObj(data, 'y'), -999);
+              assert.equal(utils.minFromArrayOfObj(data, 'y'), -999);
             });
 
           });
 
-          describe('#getMaxFromArrayOfObj', function(){
+          describe('#maxFromArrayOfObj', function(){
 
             it('should find the max value of a given field', function() {
                var data = [
@@ -134,7 +134,7 @@ define(['jquery', './dropchart/lib/utils'], function($, utils) {
                 {x: 2, y: 3},
                 {x: 3, y: -999}
               ];
-              assert.equal(utils.getMaxFromArrayOfObj(data, 'y'), 3);
+              assert.equal(utils.maxFromArrayOfObj(data, 'y'), 3);
             });
 
           });

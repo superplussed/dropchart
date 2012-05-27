@@ -1,4 +1,4 @@
-define(['jquery', 'dropchart'], function($, dropchart) {
+define(['jquery', 'dropchart', 'argsFor'], function($, dropchart, argsFor) {
   
   var should = chai.should();
   var specName = {

@@ -40,7 +40,7 @@ define('xAxis', ['Coord', 'Line', 'utils', 'jquery', 'jquerySVG'],
   };
 
   xAxis.prototype.drawTicks = function() {
-    var tickLength = this.coord.yToFloat(this.args.xAxis.ticks.length) / 2,
+    var tickLength = this.coord.yToFloat(this.args.xAxis.tick.length) / 2,
       yPos = this.coord.yToFloat(this.args.xAxis.position),
       i;
     for (i = 0; i <= this.max; i ++) {
@@ -51,7 +51,7 @@ define('xAxis', ['Coord', 'Line', 'utils', 'jquery', 'jquerySVG'],
         x: this.scale[i].coord,
         y1: yPos + tickLength,
         y2: yPos - tickLength,
-        style: this.args.xAxis.ticks
+        style: this.args.xAxis.tick
       });
     }
   };
