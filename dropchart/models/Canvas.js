@@ -1,18 +1,19 @@
-define('Canvas', ['Coord', 'utils', 'jquery', 'jquerySVG'], function(Coord, utils, $) {
+define('Canvas', ['Coord', 'utils', 'fetch', 'jquery', 'jquerySVG'],
+  function(Coord, utils, fetch, $) {
 
   function Canvas(args) {
     console.log('init Canvas');
     this.args = args;
     this.coord = new Coord(args);
 
-    this.el = $("#" + this.args.canvas.id);
+    this.el = fetch.container(args);
     this.el.addClass("dc-container");
-    if (!$(this.el).children().length) {
+
+    if (!fetch.innerContainer(args)) {
       this.el.append("<div id='" + this.args.canvas.id + "-inner' class='dc-inner-container'></div>");
     }
 
-    $(this.el).children('.dc-inner-container').svg();
-    this.svg = $(this.el).find('svg').svg('get');
+    this.svg = fetch.innerContainer(args).svg();
     this.setCanvasDimensions();
   }
 

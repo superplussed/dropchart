@@ -1,6 +1,6 @@
 define( "ui.dropchart.js",
-  ["order!jquery", 'order!jqueryUI', 'order!jquerySVG', 'Canvas', 'xAxis', 'SvgElement'],
-  function ($, jUI, jSVG, Canvas, xAxis, SvgElement) {
+  ["order!jquery", 'order!jqueryUI', 'order!jquerySVG', 'Canvas', 'xAxis'],
+  function ($, jUI, jSVG, Canvas, xAxis) {
 
   var defaultFont = {
     color: "#000",
