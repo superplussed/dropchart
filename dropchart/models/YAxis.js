@@ -71,7 +71,8 @@ define('YAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
       coord;
     this.min = utils.minFromArrayOfObj(this.data, 'y');
     this.max = utils.maxFromArrayOfObj(this.data, 'y');
-    this.ratio = this.args.canvas.innerHeight / (this.max);
+    this.height = (this.args.canvas.innerHeight ? this.args.canvas.innerHeight : this.args.canvas.height);
+    this.ratio = this.height / this.max;
   };
 
   return YAxis;

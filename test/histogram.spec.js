@@ -1,4 +1,4 @@
-define(['jquery', 'dropchart', 'argsFor'], function($, dropchart, argsFor) {
+define(['jquery', 'jquerySVG', 'dropchart', 'argsFor', 'stub'], function($, jSVG, dropchart, argsFor, stub) {
   
   var should = chai.should();
   var histogramName = {
@@ -7,18 +7,17 @@ define(['jquery', 'dropchart', 'argsFor'], function($, dropchart, argsFor) {
       describe('Histogram', function() {
 
         before(function(done) {
-          this.canvas = new dropchart.Canvas({
-            canvas: argsFor.canvas(),
-            data: argsFor.data()
-          });
+          this.canvas = stub.canvas();
+          this.xAxis = stub.xAxis();
+          this.yAxis = stub.yAxis();
           done();
         });
 
         describe('#initialize', function() {
 
           it ('should render the correct number of bars in the histogram', function() {
-            new dropchart.Histogram(argsFor.histogram());
-             $('rect.histogram-bar').length.should.equal(3);
+            new dropchart.Histogram(this.xAxis, this.yAxis, argsFor.histogram());
+            $('rect.histogram-bar').length.should.equal(3);
           });
 
           it ('should render bars with the correct attributes', function() {

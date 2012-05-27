@@ -5,21 +5,23 @@ define('Histogram', ['Rect', 'fetch', 'utils'],
     console.log('init Histogram');
     this.data = args.data;
     this.args = args;
-    this.xaxis = xaxis;
-    this.yaxis = yaxis;
+    this.xAxis = xAxis;
+    this.yAxis = yAxis;
+    this.svg = fetch.svg(args);
+    this.group = this.svg.group("histogram");
     this.drawRects();
   }
 
   Histogram.prototype.drawRects = function() {
-    for (var i = 0; i <= xAxis.max; i ++) {
+    for (var i = 0; i <= this.xAxis.max; i ++) {
       new Rect({
         svg: this.svg,
-        className: "x-axis-tick",
-        parent: this.xAxisGroup,
-        x: xAxis.scale(0),
+        className: "histogram-bar",
+        parent: this.group,
+        x: this.xAxis.scale(0),
         y: 0,
-        width: xAxis.interval * this.args.chart.bar.widthModifier,
-        height: yAxis.scale(this.data[i]),
+        width: this.xAxis.interval * this.args.chart.bar.widthModifier,
+        height: this.yAxis.scale(this.data[i].y),
         style: this.args.chart.bar
       });
     }

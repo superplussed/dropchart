@@ -68,15 +68,18 @@ define(['jquery'], function(jquery) {
     },
     histogram: function() {
       return {
-        bar: {
-          color: '#DDDDDD',
-          'stroke-color': '#000000',
-          'stroke-width': 2,
-          opacity: 1,
-          radius: 5,
-          widthModifier: 1
+        chart: {
+          bar: {
+            color: '#DDDDDD',
+            'stroke-color': '#000000',
+            'stroke-width': 2,
+            opacity: 1,
+            radius: 5,
+            widthModifier: 1
+          }
         },
-        data: this.data()
+        data: this.data(),
+        canvas: this.canvas()
       };
     }
   };

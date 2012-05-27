@@ -57,7 +57,7 @@ define('XAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
   };
 
   XAxis.prototype.scale = function(val) {
-    return this.scaleArray[val];
+    return this.scaleArray[val].coord;
   };
 
   XAxis.prototype.createScale = function() {
@@ -66,7 +66,8 @@ define('XAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
     this.scaleArray = [];
     this.min = 0;
     this.max = this.data.length - 1;
-    this.interval = this.args.canvas.innerWidth / (this.args.data.length);
+    this.width = (this.args.canvas.innerWidth ? this.args.canvas.innerWidth : this.args.canvas.width);
+    this.interval = this.width / this.args.data.length;
     coord = this.interval / 2;
     for (i = this.min; i <= this.max; i ++) {
       this.scaleArray[i] = {x: i, coord: utils.roundNumber(coord, 2)};
