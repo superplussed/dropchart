@@ -42,7 +42,7 @@ define('yAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
 
   yAxis.prototype.drawTicks = function() {
     var tickLength = this.coord.yToFloat(this.args.yAxis.tick.length) / 2,
-      xPos = this.coord.yToFloat(this.args.yAxis.position),
+      xPos = this.coord.xToFloat(this.args.yAxis.position),
       numTicks = this.args.yAxis.tick.num,
       interval = this.args.canvas.innerHeight / numTicks,
       dataPoint = 0,

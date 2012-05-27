@@ -85,13 +85,13 @@ define(['jquery', 'dropchart', 'argsFor', 'yAxis'], function($, dropchart, argsF
             });
 
             it ('should draw the correct number of ticks on the Y axis', function() {
-              $('line.x-axis-tick').length.should.equal(3);
+              $('line.y-axis-tick').length.should.equal(4);
             });
 
             it ('should place the ticks at the correct points on the axis', function() {
-              $('line.x-axis-tick:eq(0)').attr("x1").should.equal("63.33");
-              $('line.x-axis-tick:eq(1)').attr("x1").should.equal("190");
-              $('line.x-axis-tick:eq(2)').attr("x1").should.equal("316.67");
+              $('line.y-axis-tick:eq(1)').attr("y1").should.equal(0);
+              $('line.y-axis-tick:eq(2)').attr("y1").should.equal(0);
+              $('line.y-axis-tick:eq(3)').attr("y1").should.equal(0);
             });
 
           });

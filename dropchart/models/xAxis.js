@@ -1,12 +1,12 @@
-define('xAxis', ['Coord', 'Line', 'utils', 'jquery', 'jquerySVG'],
-  function(Coord, Line, utils, $) {
+define('xAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
+  function(Coord, Line, utils, fetch, $) {
 
   function xAxis(args) {
     console.log('init xAxis');
 
     this.args = args;
     this.data = args.data;
-    this.svg = $('#' + this.args.canvas.id + "-inner").svg('get');
+    this.svg = fetch.svg(args);
     this.coord = new Coord(this.args);
     this.createScale();
     if (this.args.xAxis.show) {
