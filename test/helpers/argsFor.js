@@ -16,15 +16,15 @@ define(['jquery'], function(jquery) {
     },
     canvasWithInner: function() {
       return $.extend({
-        innerWidth: 400,
-        innerHeight: 200
+        innerWidth: 380,
+        innerHeight: 180
       }, this.canvas());
     },
     data: function() {
       return [
-        {x: "foo", y: 100},
+        {x: "foo", y: 180},
         {x: "bar", y: 110},
-        {x: "baz", y: 180}
+        {x: "baz", y: 100}
       ];
     },
     xAxis: function() {
@@ -71,15 +71,15 @@ define(['jquery'], function(jquery) {
         chart: {
           bar: {
             color: '#DDDDDD',
-            'stroke-color': '#000000',
-            'stroke-width': 2,
+            strokeColor: '#000000',
+            strokeWidth: 2,
             opacity: 1,
             radius: 5,
             widthModifier: 1
           }
         },
         data: this.data(),
-        canvas: this.canvas()
+        canvas: this.canvasWithInner()
       };
     }
   };

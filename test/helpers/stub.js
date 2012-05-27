@@ -2,21 +2,21 @@ define(['jquery', 'argsFor', 'dropchart'], function($, argsFor, dropchart) {
   var stub = {
     xAxis: function() {
       return new dropchart.XAxis({
-        canvas: argsFor.canvas(),
+        canvas: argsFor.canvasWithInner(),
         xAxis: argsFor.xAxis(),
         data: argsFor.data()
       });
     },
     yAxis: function() {
       return new dropchart.YAxis({
-        canvas: argsFor.canvas(),
+        canvas: argsFor.canvasWithInner(),
         yAxis: argsFor.yAxis(),
         data: argsFor.data()
       });
     },
     canvas: function() {
       return new dropchart.Canvas({
-        canvas: argsFor.canvas(),
+        canvas: argsFor.canvasWithInner(),
         data: argsFor.data()
       });
     }

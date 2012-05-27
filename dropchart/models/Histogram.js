@@ -14,14 +14,15 @@ define('Histogram', ['Rect', 'fetch', 'utils'],
 
   Histogram.prototype.drawRects = function() {
     for (var i = 0; i <= this.xAxis.max; i ++) {
+      var height = this.yAxis.scale(this.data[i].y);
       new Rect({
         svg: this.svg,
         className: "histogram-bar",
         parent: this.group,
-        x: this.xAxis.scale(0),
-        y: 0,
+        x: this.xAxis.scale(i) - (this.xAxis.interval / 2),
+        y: this.args.canvas.innerHeight - height,
         width: this.xAxis.interval * this.args.chart.bar.widthModifier,
-        height: this.yAxis.scale(this.data[i].y),
+        height: height,
         style: this.args.chart.bar
       });
     }

@@ -5,10 +5,11 @@ define('Rect', ['jquery', 'jquerySVG'],
     args.svg.rect(args.parent, args.x, args.y, args.width, args.height, args.style.radius, args.style.radius,
       {
         'class': args.className,
+        fill: args.style.color,
         stroke: args.style.strokeColor,
         'stroke-width': args.style.strokeWidth,
         opacity: args.style.opacity,
-        'shape-rendering': 'crispedges'
+        'vector-effect': 'non-scaling-stroke'
       });
   }
 
