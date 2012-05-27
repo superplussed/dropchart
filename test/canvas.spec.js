@@ -2,7 +2,7 @@ define(['dropchart'], function(dropchart) {
   
   var should = chai.should();
   var canvasSpec = {
-    name: "canvas.spec",
+
     run: function() {
       describe('Canvas', function() {
 

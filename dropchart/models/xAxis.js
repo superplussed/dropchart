@@ -30,7 +30,7 @@ define('xAxis', ['Coord', 'Line', 'utils', 'jquery', 'jquerySVG'],
     this.xAxisGroup = this.svg.group("x-axis");
     new Line({
       svg: this.svg,
-      className: "x-axis",
+      className: "x-axis-line",
       parent: this.xAxisGroup,
       x1: 0,
       x2: "100%",

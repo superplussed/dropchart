@@ -23,19 +23,64 @@ define( "ui.dropchart.js",
 
     options: {
       addClickAction: false,
-      addMouseoverAction: true,
       showPopoverOnMouseover: false,
       popoverRemainsOnClick: false,
 
       canvas: {
+        background: 'grid',
         usePerc: true,
         width: "90%",
         height: 200,
+        margin: {
+          top: 10,
+          right: 10,
+          bottom: 10,
+          left: 10
+        }
+      },
+      chart: {
+        type: 'histogram',
+        useRollover: true,
+        rolloverDuration: 100,
+        rolloutDuration: 100,
         margin: {
           top: 20,
           right: 20,
           bottom: 40,
           left: 80
+        },
+        bar: {
+          color: '#3c421c',
+          'stroke-color': '#84d642',
+          'stroke-width': 2,
+          opacity: 1,
+          radius: 5,
+          widthModifier: 0.85
+        },
+        barBg: {
+          color: 'none',
+          'stroke-color': '#FFFFFF',
+          'stroke-width': 2,
+          opacity: 0,
+          radius: 5,
+          height: '100%',
+          widthModifier: 0.85
+        },
+        barRoll: {
+          color: '#5DCF27',
+          'stroke-color': '#84D642',
+          'stroke-width': 2,
+          opacity: 1,
+          radius: 5,
+          height: '100%',
+          widthModifier: 0.85
+        },
+        barBgRoll: {
+          color: '#FFFFFF',
+          'stroke-color': '#FFFFFF',
+          'stroke-width': 2,
+          opacity: 0.1,
+          radius: 5
         }
       },
       xAxis: {
@@ -46,7 +91,13 @@ define( "ui.dropchart.js",
         'stroke-width': 2,
         position: "80%",
         font: defaultFont,
-        labels: defaultLabel
+        labels: defaultLabel,
+        ticks: {
+          opacity: 1,
+          strokeColor: "#000",
+          strokeWidth: 1,
+          length: 10
+        }
       },
 
       showYAxis: true,
@@ -67,13 +118,13 @@ define( "ui.dropchart.js",
       xAxisLabelHeight: '7%',
       xAxisLabelRadius: 3,
       xAxisLabelColor: '#594336',
-      xAxisLabelStrokeColor: '#FFF',
+      xAxisLabelStrokeColor: '#FFFFFF',
       xAxisLabelStrokeWidth: 1,
       xAxisLabelOpacity: 1,
 
       chartLabelFontX: 14,
       chartLabelFontY: 20,
-      chartLabelFontColor: '#FFF',
+      chartLabelFontColor: '#FFFFFF',
       chartLabelFontSize: '12px',
       chartLabelFontOpacity: 1,
 
@@ -96,40 +147,7 @@ define( "ui.dropchart.js",
       popoverMargin: 20,
       popoverRadius: 5,
 
-      marginLeft: 80,
-      marginRight: 20,
-      marginBottom: 40,
-      marginTop: 20,
-
-      dateFormat: '%Y',
-
-      barColor: '#3c421c',
-      barStrokeColor: '#84d642',
-      barStrokeWidth: 2,
-      barOpacity: 1,
-      barWidthModifier: 0.85,
-      barRadius: 5,
-
-      barRollColor: '#5DCF27',
-      barRollStrokeColor: '#84D642',
-      barRollStrokeWidth: 2,
-      barRollOpacity: 1,
-      barMouseoverDuration: 100,
-      barMouseoutDuration: 100,
-
-      barBgMouseover: true,
-      barBgColor: 'none',
-      barBgOpacity: 0,
-      barBgRadius: 5,
-      barBgHeight: '100%',
-      barBgStrokeColor: '#FFFFFF',
-      barBgStrokeWidth: 2,
-
-      barBgRollColor: '#FFFFFF',
-      barBgRollOpacity: 0.1,
-      barBgRollRadius: 5,
-      barBgRollStrokeColor: '#FFFFFF',
-      barBgRollStrokeWidth: 2
+      dateFormat: '%Y'
     },
            
     _create: function () {

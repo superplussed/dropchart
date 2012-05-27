@@ -1,31 +1,16 @@
-define(['jquery', 'dropchart'], function($, dropchart) {
+define(['jquery', 'dropchart', 'argsFor'], function($, dropchart, argsFor) {
   
   var should = chai.should();
   var xAxisSpec = {
-    name: "xAxis.spec",
+
     run: function() {
 
       describe('xAxis', function() {
 
         before(function(done) {
           this.args = {
-            canvas: {
-              id: "histogram",
-              userPerc: true,
-              width: 400,
-              height: 200,
-              margin: {
-                top: 10,
-                right: 10,
-                bottom: 10,
-                left: 10
-              }
-            },
-            data: [
-              {x: "foo", y: 100},
-              {x: "bar", y: 110},
-              {x: "baz", y: 180}
-            ]
+            canvas: argsFor.canvas(),
+            data: argsFor.data()
           };
           this.canvas = new dropchart.Canvas(this.args);
           done();
@@ -41,12 +26,7 @@ define(['jquery', 'dropchart'], function($, dropchart) {
 
         describe ("#destroy", function() {
           it ('should remove the xAxis from the canvas', function() {
-            this.args.xAxis = {
-              show: true,
-              strokeColor: "#000",
-              strokeWidth: 2,
-              position: "80%"
-            };
+            this.args.xAxis = argsFor.xAxis();
             this.xAxis = new dropchart.xAxis(this.args);
             $("#histogram").should.have('line');
             this.xAxis.destroy();
@@ -59,12 +39,7 @@ define(['jquery', 'dropchart'], function($, dropchart) {
           describe('args.xAxis.show = true', function() {
 
             beforeEach(function(done) {
-              this.args.xAxis = {
-                show: true,
-                strokeColor: "#000",
-                strokeWidth: 2,
-                position: "80%"
-              };
+              this.args.xAxis = argsFor.xAxis();
               this.xAxis = new dropchart.xAxis(this.args);
               done();
             });
@@ -104,19 +79,7 @@ define(['jquery', 'dropchart'], function($, dropchart) {
           describe('args.xAxis.useTicks = true', function() {
 
             beforeEach(function(done) {
-              this.args.xAxis = {
-                show: true,
-                strokeColor: "#000",
-                strokeWidth: 2,
-                position: "80%",
-                useTicks: true,
-                ticks: {
-                  opacity: 1,
-                  strokeColor: "#000",
-                  strokeWidth: 1,
-                  length: 10
-                }
-              };
+              this.args.xAxis = argsFor.xAxisWithTicks();
               this.xAxis = new dropchart.xAxis(this.args);
               done();
             });
