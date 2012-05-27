@@ -3,7 +3,7 @@ define(['jquery'], function(jquery) {
     canvas: function() {
       return {
         id: "histogram",
-        userPerc: true,
+        usePerc: false,
         width: 400,
         height: 200,
         margin: {
@@ -13,6 +13,12 @@ define(['jquery'], function(jquery) {
           left: 10
         }
       };
+    },
+    canvasWithInner: function() {
+      return $.extend({
+        innerWidth: 400,
+        innerHeight: 200
+      }, this.canvas());
     },
     data: function() {
       return [

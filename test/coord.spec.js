@@ -1,4 +1,4 @@
-define(['jquery', 'dropchart'], function($, dropchart) {
+define(['jquery', 'dropchart', 'argsFor'], function($, dropchart, argsFor) {
   
   var should = chai.should();
   var coordSpec = {
@@ -9,25 +9,11 @@ define(['jquery', 'dropchart'], function($, dropchart) {
         describe("options.usePerc: true", function() {
 
           before(function(done){
+            var canvasArgs = argsFor.canvas();
+            canvasArgs.usePerc = true;
             this.coord = new dropchart.Coord({
-              canvas: {
-                width: 400,
-                innerWidth: 400,
-                height: 200,
-                innerHeight: 200,
-                usePerc: true,
-                margin: {
-                  top: 0,
-                  right: 0,
-                  bottom: 0,
-                  left: 0
-                }
-              }
-            },
-            [
-              {x: 0, y: 200},
-              {x: 1, y: 100}
-            ]);
+              canvas: canvasArgs
+            });
             done();
           });
 

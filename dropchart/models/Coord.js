@@ -24,7 +24,15 @@
     };
 
     this._getPixels = function(axis) {
-      return (axis === 'y' ? this.args.canvas.innerHeight : this.args.canvas.innerWidth);
+      var height, width;
+      if (this.args.canvas.innerHeight) {
+        height = this.args.canvas.innerHeight;
+        width = this.args.canvas.innerWidth;
+      } else {
+        height = this.args.canvas.height;
+        width = this.args.canvas.width;
+      }
+      return (axis === 'y' ? height: width);
     };
 
     this._percToFloatOfContainer =  function(val, axis) {
