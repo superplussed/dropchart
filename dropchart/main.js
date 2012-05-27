@@ -13,6 +13,7 @@ require.config({
     Coord: './dropchart/models/Coord',
     Canvas: './dropchart/models/Canvas',
     Event: './dropchart/models/Event',
+    Line: './dropchart/models/Line',
     Histogram: './dropchart/models/Histogram',
     DefaultOptions: './dropchart/models/DefaultOptions',
     Linechart: './dropchart/models/Linechart',

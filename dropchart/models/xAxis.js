@@ -1,4 +1,5 @@
-define('xAxis', ['Coord', 'utils', 'jquery', 'jquerySVG'], function(Coord, utils, $) {
+define('xAxis', ['Coord', 'Line', 'utils', 'jquery', 'jquerySVG'],
+  function(Coord, Line, utils, $) {
 
   function xAxis(args) {
     console.log('init xAxis');
@@ -27,14 +28,15 @@ define('xAxis', ['Coord', 'utils', 'jquery', 'jquerySVG'], function(Coord, utils
 
   xAxis.prototype.drawLine = function() {
     this.xAxisGroup = this.svg.group("x-axis");
-    this.svg.line(this.xAxisGroup, 0, this.args.xAxis.position, "100%", this.args.xAxis.position,
-      {
-        'class': "x-axis-line",
-        stroke: this.args.xAxis.strokeColor,
-        'stroke-width': this.args.xAxis.strokeWidth,
-        opacity: this.args.xAxis.opacity,
-        'shape-rendering': 'crispedges'
-      });
+    new Line({
+      svg: this.svg,
+      className: "x-axis",
+      parent: this.xAxisGroup,
+      x1: 0,
+      x2: "100%",
+      y: this.args.xAxis.position,
+      style: this.args.xAxis
+    });
   };
 
   xAxis.prototype.drawTicks = function() {
@@ -42,13 +44,14 @@ define('xAxis', ['Coord', 'utils', 'jquery', 'jquerySVG'], function(Coord, utils
       yPos = this.coord.yToFloat(this.args.xAxis.position),
       i;
     for (i = 0; i <= this.max; i ++) {
-      this.svg.line(this.xAxisGroup, this.scale[i].coord,  yPos + tickLength, this.scale[i].coord, yPos - tickLength,
-      {
-        'class': "x-axis-tick",
-        stroke: this.args.xAxis.ticks.strokeColor,
-        'stroke-width': this.args.xAxis.ticks.strokeWidth,
-        opacity: this.args.xAxis.ticks.opacity,
-        'shape-rendering': 'crispedges'
+      new Line({
+        svg: this.svg,
+        className: "x-axis-tick",
+        parent: this.xAxisGroup,
+        x: this.scale[i].coord,
+        y1: yPos + tickLength,
+        y2: yPos - tickLength,
+        style: this.args.xAxis.ticks
       });
     }
   };
