@@ -48,7 +48,7 @@ define('XAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
         svg: this.svg,
         className: "x-axis-tick",
         parent: this.xAxisGroup,
-        x: this.scale(i).coord,
+        x: this.scale(i),
         y1: yPos + tickLength,
         y2: yPos - tickLength,
         style: this.args.xAxis.tick

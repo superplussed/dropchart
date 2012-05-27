@@ -34,18 +34,21 @@ define(['jquery', 'jquerySVG', 'dropchart', 'argsFor', 'stub'], function($, jSVG
           });
 
           it ('should render the bars with the correct heights', function() {
+            $('rect.histogram-bar:eq(0)').should.have.attr("height");
             $('rect.histogram-bar:eq(0)').attr("height").should.equal("180");
             $('rect.histogram-bar:eq(1)').attr("height").should.equal("110");
             $('rect.histogram-bar:eq(2)').attr("height").should.equal("100");
           });
 
           it ('should render the bars with the correct x values', function() {
+            $('rect.histogram-bar:eq(0)').should.have.attr("x");
             $('rect.histogram-bar:eq(0)').attr("x").should.equal("0");
             $('rect.histogram-bar:eq(1)').attr("x").should.equal("126.67");
             $('rect.histogram-bar:eq(2)').attr("x").should.equal("253.34");
           });
 
           it ('should render the bars with the correct y values', function() {
+            $('rect.histogram-bar:eq(0)').should.have.attr("y");
             $('rect.histogram-bar:eq(0)').attr("y").should.equal("0");
             $('rect.histogram-bar:eq(1)').attr("y").should.equal("70");
             $('rect.histogram-bar:eq(2)').attr("y").should.equal("80");
@@ -68,10 +71,12 @@ define(['jquery', 'jquerySVG', 'dropchart', 'argsFor', 'stub'], function($, jSVG
 
           describe("args.bar.widthModifier = 0.9", function() {
 
-            it ('should modifify the bar width', function() {
+            it ('should render the adjusted bar width', function() {
+              var args = argsFor.histogram();
+              args.chart.bar.widthModifier = 0.9;
               this.histogram.destroy();
-              this.histogram = new dropchart.Histogram(this.xAxis, this.yAxis, argsFor.histogram());
-              $('#histogram').find('rect.histogram-bar:first').attr('width').should.equal('100');
+              this.histogram = new dropchart.Histogram(this.xAxis, this.yAxis, args);
+              $('#histogram').find('rect.histogram-bar:first').attr('width').should.equal('114');
             });
 
           });

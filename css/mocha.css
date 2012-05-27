@@ -4,6 +4,11 @@ body {
   padding: 60px 50px;
 }
 
+#mocha {
+  border-top: 1px solid gray;
+  margin-top: 30px;
+}
+
 #mocha ul, #mocha li {
   margin: 0;
   padding: 0;
@@ -151,16 +156,16 @@ body {
 }
 
 #stats {
-  position: fixed;
+  position: absolute;
   top: 15px;
-  right: 10px;
+  left: 60px;
   font-size: 12px;
   margin: 0;
   color: #888;
 }
 
 #stats .progress {
-  float: right;
+  float: left;
   padding-top: 0;
 }
 

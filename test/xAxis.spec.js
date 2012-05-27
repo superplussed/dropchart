@@ -89,6 +89,7 @@ define(['jquery', 'dropchart', 'argsFor', 'XAxis'], function($, dropchart, argsF
             });
 
             it ('should place the ticks at the correct points on the axis', function() {
+              $('line.x-axis-tick:eq(0)').should.have.attr("x1");
               $('line.x-axis-tick:eq(0)').attr("x1").should.equal("63.33");
               $('line.x-axis-tick:eq(1)').attr("x1").should.equal("190");
               $('line.x-axis-tick:eq(2)').attr("x1").should.equal("316.67");
