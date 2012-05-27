@@ -35,6 +35,14 @@ define(['jquery'], function(jquery) {
         position: "80%"
       };
     },
+    yAxis: function() {
+      return {
+        show: true,
+        strokeColor: "#000",
+        strokeWidth: 2,
+        position: "5%"
+      };
+    },
     xAxisWithTicks: function() {
       return $.extend({
         useTicks: true,
@@ -45,6 +53,18 @@ define(['jquery'], function(jquery) {
           length: 10
         }
       }, this.xAxis());
+    },
+    yAxisWithTicks: function() {
+      return $.extend({
+        useTicks: true,
+        tick: {
+          opacity: 1,
+          strokeColor: "#000",
+          strokeWidth: 1,
+          length: 10,
+          num: 4
+        }
+      }, this.yAxis());
     },
     histogram: function() {
       return {

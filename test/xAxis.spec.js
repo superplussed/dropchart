@@ -28,9 +28,9 @@ define(['jquery', 'dropchart', 'argsFor', 'xAxis'], function($, dropchart, argsF
           it ('should remove the xAxis from the canvas', function() {
             this.args.xAxis = argsFor.xAxis();
             this.xAxis = new dropchart.xAxis(this.args);
-            $("#histogram").should.have('line');
+            $("#histogram").should.have('line.x-axis-line');
             this.xAxis.destroy();
-            $("#histogram").should.not.have('line');
+            $("#histogram").should.not.have('line.x-axis-line');
           });
         });
 
@@ -45,11 +45,11 @@ define(['jquery', 'dropchart', 'argsFor', 'xAxis'], function($, dropchart, argsF
             });
 
             it ('should draw a line for the X axis', function() {
-              $("#histogram").should.have('line');
+              $("#histogram").should.have('line.x-axis-line');
             });
 
             it ('should draw a X axis line with the correct attributes', function() {
-              var line = $('#histogram').find('line');
+              var line = $('#histogram').find('line.x-axis-line');
               if (line) {
                 line.attr('stroke').should.equal("#000");
                 line.attr('stroke-width').should.equal("2");
@@ -58,7 +58,7 @@ define(['jquery', 'dropchart', 'argsFor', 'xAxis'], function($, dropchart, argsF
                 line.attr('y1').should.equal("80%");
                 line.attr('y2').should.equal("80%");
               } else {
-                $("#histogram").should.have('line');
+                $("#histogram").should.have('line.x-axis-line');
               }
             });
 
@@ -71,7 +71,7 @@ define(['jquery', 'dropchart', 'argsFor', 'xAxis'], function($, dropchart, argsF
                 show: false
               };
               this.xAxis = new dropchart.xAxis(this.args);
-              $('#histogram').should.not.have('line');
+              $('#histogram').should.not.have('line.x-axis-line');
             });
 
           });

@@ -14,7 +14,7 @@ define(['jquery', 'jquerySVG'], function($) {
     },
 
     svg: function(args) {
-      return this.elOrFalse($(this.container(args)).find('svg').svg('get'));
+      return $(this.innerContainer(args)).svg('get');
     }
   };
   return fetch;

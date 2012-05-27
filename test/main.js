@@ -8,19 +8,21 @@ require.config({
     canvasSpec: './test/canvas.spec',
     coordSpec: './test/coord.spec',
     histogramSpec: './test/histogram.spec',
+    yAxisSpec: './test/yAxis.spec',
     xAxisSpec: './test/xAxis.spec'
   }
   //,urlArgs: 'uncache=' + (+new Date())
 });
 
-define('test', ['utilsSpec', 'canvasSpec', 'coordSpec', 'xAxisSpec', 'histogramSpec'],
-  function(utilsSpec, canvasSpec, coordSpec, xAxisSpec, histogramSpec) {
+define('test', ['utilsSpec', 'canvasSpec', 'coordSpec', 'xAxisSpec', 'histogramSpec', 'yAxisSpec'],
+  function(utilsSpec, canvasSpec, coordSpec, xAxisSpec, histogramSpec, yAxisSpec) {
   return {
     name: 'test',
     utilsSpec: utilsSpec,
     canvasSpec: canvasSpec,
     coordSpec: coordSpec,
     histogramSpec: histogramSpec,
-    xAxisSpec: xAxisSpec
+    xAxisSpec: xAxisSpec,
+    yAxisSpec: yAxisSpec
   };
 });

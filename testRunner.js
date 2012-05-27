@@ -5,6 +5,7 @@ define(['jquery', 'test', 'dropchart'], function($, test, dropchart) {
       var i, specs = [
         test.canvasSpec,
         test.xAxisSpec,
+        test.yAxisSpec,
         test.histogramSpec,
         test.coordSpec,
         test.utilsSpec
