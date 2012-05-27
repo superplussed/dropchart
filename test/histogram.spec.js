@@ -17,14 +17,14 @@ define(['jquery', 'dropchart', 'argsFor'], function($, dropchart, argsFor) {
         describe('#initialize', function() {
 
           it ('should render the correct number of bars in the histogram', function() {
-            new Histogram(argsFor.histogram());
+            new dropchart.Histogram(argsFor.histogram());
              $('rect.histogram-bar').length.should.equal(3);
           });
 
           it ('should render bars with the correct attributes', function() {
 
             var bar = $('#histogram').find('rect.histogram-bar:first');
-            if (bar) {
+            if (bar.length) {
               bar.attr('color').should.equal("#DDDDDD");
               bar.attr('stroke-color').should.equal("#000000");
               bar.attr('stroke-width').should.equal("2");
