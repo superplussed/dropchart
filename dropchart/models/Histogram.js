@@ -19,12 +19,18 @@ define('Histogram', ['Rect', 'fetch', 'utils'],
         svg: this.svg,
         className: "histogram-bar",
         parent: this.group,
-        x: this.xAxis.scale(i) - (this.xAxis.interval / 2),
-        y: this.args.canvas.innerHeight - height,
-        width: this.xAxis.interval * this.args.chart.bar.widthModifier,
+        x: utils.roundNumber(this.xAxis.scale(i) - (this.xAxis.interval / 2), 2),
+        y: utils.roundNumber(this.args.canvas.innerHeight - height, 2),
+        width: utils.roundNumber(this.xAxis.interval * this.args.chart.bar.widthModifier, 2),
         height: height,
         style: this.args.chart.bar
       });
+    }
+  };
+
+  Histogram.prototype.destroy = function() {
+    if (this.group) {
+      $(this.group).remove();
     }
   };
 
