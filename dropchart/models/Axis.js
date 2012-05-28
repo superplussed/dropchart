@@ -3,7 +3,6 @@ define('Axis',
   function(Coord, Line, utils, fetch, $) {
 
   function Axis(args) {
-    this.args = args;
     if (this.args) {
       this.data = args.data;
       this.svg = fetch.svg(args);

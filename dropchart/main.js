@@ -23,8 +23,8 @@ require.config({
   //,urlArgs: 'uncache=' + (+new Date())
 });
 
-define('dropchart', ['order!jquery', 'order!jquerySVG', 'uiDropchart', 'Canvas', 'Coord', 'XAxis', 'YAxis', 'Histogram', 'Axis'],
-  function($, jsSVG, uiDropchart, Canvas, Coord, XAxis, YAxis, Histogram, Axis) {
+define('dropchart', ['order!jquery', 'order!jquerySVG', 'uiDropchart', 'Canvas', 'Coord', 'XAxis', 'YAxis', 'Histogram'],
+  function($, jsSVG, uiDropchart, Canvas, Coord, XAxis, YAxis, Histogram) {
   return {
     name: 'dropchart',
     dropchart: uiDropchart,
@@ -32,7 +32,6 @@ define('dropchart', ['order!jquery', 'order!jquerySVG', 'uiDropchart', 'Canvas',
     Coord: Coord,
     XAxis: XAxis,
     YAxis: YAxis,
-    Histogram: Histogram,
-    Axis: Axis
+    Histogram: Histogram
   };
 });
