@@ -6,9 +6,14 @@ define(['jquery', 'jquerySVG', 'dropchart', 'argsFor', 'stub'], function($, jSVG
     run: function() {
       describe('Histogram', function() {
 
-        before(function(done) {
+        before(function() {
           this.canvas = stub.canvas();
-          done();
+        });
+
+        afterEach(function() {
+          if (this.histogram) {
+            this.histogram.destroy();
+          }
         });
 
         describe ("#destroy", function() {
@@ -22,9 +27,8 @@ define(['jquery', 'jquerySVG', 'dropchart', 'argsFor', 'stub'], function($, jSVG
 
         describe('#initialize', function() {
           
-          before(function(done) {
+          beforeEach(function() {
             this.histogram = new dropchart.Histogram(argsFor.histogram());
-            done();
           });
 
           it ('should render the correct number of bars in the histogram', function() {
@@ -66,34 +70,34 @@ define(['jquery', 'jquerySVG', 'dropchart', 'argsFor', 'stub'], function($, jSVG
               bar.attr('opacity').should.equal("1");
             }
           });
+        });
 
-          describe("args.chart.bar.widthModifier = 0.9", function() {
+        describe("args.chart.bar.widthModifier = 0.9", function() {
 
-            it ('should render the adjusted bar width', function() {
-              var args = argsFor.histogram();
-              args.chart.bar.widthModifier = 0.9;
-              this.histogram.destroy();
-              this.histogram = new dropchart.Histogram(args);
-              $('#histogram').find('rect.histogram-bar:first').attr('width').should.equal('114');
-            });
-
+          it ('should render the adjusted bar width', function() {
+            var args = argsFor.histogram();
+            args.chart.bar.widthModifier = 0.9;
+            this.histogram = new dropchart.Histogram(args);
+            $('#histogram').find('rect.histogram-bar:first').attr('width').should.equal('114');
           });
 
-          describe("args.chart.margin = [11, 22, 33, 44]", function() {
+        });
 
-            it ('adjust the location and size of the chart', function() {
-              var args = argsFor.histogram();
-              args.chart.margin = {
-                top: 11,
-                right: 22,
-                bottom: 33,
-                left: 44
-              };
-              this.histogram.destroy();
-              this.histogram = new dropchart.Histogram(args);
-              $('#histogram').find('rect.histogram-bar:first').attr('width').should.equal('114');
-            });
+        describe("args.chart.margin = [11, 22, 33, 44]", function() {
 
+          it ('should adjust the location and size of the chart', function() {
+            var args = argsFor.histogram();
+            args.chart.margin = {
+              top: 11,
+              right: 22,
+              bottom: 33,
+              left: 44
+            };
+            this.histogram = new dropchart.Histogram(args);
+            $('#histogram').find('rect.histogram-bar:eq(1)').attr('width').should.equal('104.67');
+            $('#histogram').find('rect.histogram-bar:eq(1)').attr('height').should.equal('83.11');
+            $('#histogram').find('rect.histogram-bar:eq(1)').attr('x').should.equal('104.67');
+            $('#histogram').find('rect.histogram-bar:eq(1)').attr('y').should.equal('52.89');
           });
 
         });

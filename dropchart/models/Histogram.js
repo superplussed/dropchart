@@ -49,7 +49,7 @@ define('Histogram', ['Rect', 'XAxis', 'YAxis', 'fetch', 'utils'],
         x: utils.roundNumber(this.xAxis.scale(i) - (this.xAxis.interval / 2), 2),
         y: utils.roundNumber(this.height - height, 2),
         width: utils.roundNumber(this.xAxis.interval * this.args.chart.bar.widthModifier, 2),
-        height: height,
+        height: utils.roundNumber(height, 2),
         style: this.args.chart.bar
       });
     }
