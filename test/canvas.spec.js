@@ -1,4 +1,6 @@
-define(['dropchart', 'argsFor'], function(dropchart, argsFor) {
+define(
+  ['dropchart', 'argsFor'],
+  function(dropchart, argsFor) {
   
   var should = chai.should();
   var canvasSpec = {

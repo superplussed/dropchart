@@ -1,4 +1,6 @@
-define(['jquery', 'dropchart', 'argsFor', 'YAxis', 'stub'], function($, dropchart, argsFor, YAxis, stub) {
+define(
+  ['jquery', 'dropchart', 'argsFor', 'YAxis', 'stub'],
+  function($, dropchart, argsFor, YAxis, stub) {
   
   var should = chai.should();
   var yAxisSpec = {

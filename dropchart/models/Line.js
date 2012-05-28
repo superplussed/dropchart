@@ -1,4 +1,5 @@
-define('Line', ['jquery', 'jquerySVG'],
+define('Line',
+  ['jquery', 'jquerySVG'],
   function($) {
 
   function Line(args) {

@@ -1,52 +1,16 @@
-define('XAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
-  function(Coord, Line, utils, fetch, $) {
+define('XAxis',
+  ['Axis', 'Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
+  function(Axis, Coord, Line, utils, fetch, $) {
+
+  XAxis.prototype = new Axis();
+  XAxis.prototype.constructor = XAxis;
 
   function XAxis(args) {
-    console.log('init XAxis');
-
-    this.groupId = "x-axis-group";
     this.args = args;
-    this.data = args.data;
-    this.svg = fetch.svg(args);
-
-    if (this.args.chart && this.args.chart.width) {
-      this.width = this.args.chart.width;
-    } else if (this.args.canvas.innerWidth) {
-      this.width = this.args.canvas.innerWidth;
-    } else {
-      this.width = this.args.canvas.width;
-    }
-
-    this.coord = new Coord(this.args);
-    this.createScale();
+    this.groupId = "x-axis-group";
+    this.axisArgs = this.args.xAxis;
+    Axis.call(this, args);
   }
-
-  XAxis.prototype.destroy = function() {
-    if (this.group) {
-      $(this.group).remove();
-    }
-  };
-
-  XAxis.prototype.render = function() {
-
-    if (!this.group) {
-      if (this.args.chart && this.args.chart.group) {
-        this.group = this.svg.group(fetch.svgGroup(this.args, this.args.chart.group), this.groupId);
-      } else {
-        this.group = this.svg.group(this.groupId);
-      }
-    }
-
-    if (this.args.xAxis.drawLine) {
-      this.drawLine();
-    }
-    if (this.args.xAxis.drawTicks) {
-      this.drawTicks();
-    }
-    if (this.args.xAxis.drawLabels) {
-      this.drawLabels();
-    }
-  };
 
   XAxis.prototype.drawLine = function() {
     var y = (this.args.chart.height || this.args.canvas.height);

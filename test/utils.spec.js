@@ -1,4 +1,7 @@
-define(['jquery', './dropchart/lib/utils'], function($, utils) {
+define(
+  ['jquery', './dropchart/lib/utils'],
+  function($, utils) {
+    
   var utilsSpec = {
 
     run: function() {

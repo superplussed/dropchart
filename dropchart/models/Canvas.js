@@ -1,4 +1,5 @@
-define('Canvas', ['Coord', 'utils', 'fetch', 'jquery', 'jquerySVG'],
+define('Canvas',
+  ['Coord', 'utils', 'fetch', 'jquery', 'jquerySVG'],
   function(Coord, utils, fetch, $) {
 
   function Canvas(args) {

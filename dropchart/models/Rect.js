@@ -1,4 +1,5 @@
-define('Rect', ['jquery', 'jquerySVG'],
+define('Rect',
+  ['jquery', 'jquerySVG'],
   function($) {
 
   function Rect(args) {

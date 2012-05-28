@@ -1,4 +1,5 @@
-define('Histogram', ['Rect', 'XAxis', 'YAxis', 'fetch', 'utils'],
+define('Histogram',
+  ['Rect', 'XAxis', 'YAxis', 'fetch', 'utils'],
   function(Rect, XAxis, YAxis, fetch, utils) {
 
   function Histogram(args) {

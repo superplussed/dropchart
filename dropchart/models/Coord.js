@@ -1,4 +1,6 @@
- define('Coord', ['utils', 'jquery'], function(utils, $) {
+ define('Coord',
+  ['utils', 'jquery'],
+  function(utils, $) {
 
   function Coord( args ) {
     console.log( 'init Coord' );
