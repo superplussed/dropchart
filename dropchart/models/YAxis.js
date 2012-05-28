@@ -1,6 +1,6 @@
 define('YAxis',
-  ['Axis', 'Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
-  function(Axis, Coord, Line, utils, fetch, $) {
+  ['Axis', 'Coord', 'Line', 'Text', 'utils', 'fetch', 'jquery', 'jquerySVG'],
+  function(Axis, Coord, Line, Text, utils, fetch, $) {
 
   YAxis.prototype = new Axis();
   YAxis.prototype.constructor = YAxis;
@@ -11,6 +11,27 @@ define('YAxis',
     this.axisArgs = this.args.yAxis;
     Axis.call(this, args);
   }
+
+  YAxis.prototype.drawLabels = function() {
+    var xPos = this.coord.xToFloat('chart', this.args.yAxis.label.xOffset),
+      that = this,
+      dataPoint = 0,
+      value = this.max,
+      i;
+    for (i = 1; i <= this.numTicks; i ++) {
+      new Text({
+        svg: this.svg,
+        className: "y-axis-label",
+        parent: this.group,
+        value: value.toString(),
+        x: xPos,
+        y: that.scale(dataPoint) + this.args.yAxis.label.yOffset,
+        style: this.args.yAxis.label.font
+      });
+      dataPoint += this.coordInterval;
+      value -= this.valueInterval;
+    }
+  };
 
   YAxis.prototype.drawLine = function() {
     new Line({
@@ -26,13 +47,11 @@ define('YAxis',
 
   YAxis.prototype.drawTicks = function() {
     var tickLength = this.coord.xToFloat('canvas', this.args.yAxis.tick.length) / 2,
-      xPos = this.coord.xToFloat('chart', this.args.yAxis.tick.position),
-      numTicks = this.args.yAxis.tick.num,
-      interval = this.args.canvas.innerHeight / numTicks,
+      xPos = this.coord.xToFloat('chart', this.args.yAxis.tick.xOffset),
       dataPoint = 0,
       that = this,
       i;
-    for (i = 1; i <= numTicks; i ++) {
+    for (i = 1; i <= this.numTicks; i ++) {
       new Line({
         svg: this.svg,
         className: "y-axis-tick",
@@ -42,7 +61,7 @@ define('YAxis',
         x2: xPos - tickLength,
         style: this.args.yAxis.tick
       });
-      dataPoint += interval;
+      dataPoint += this.coordInterval;
     }
   };
 
@@ -54,6 +73,9 @@ define('YAxis',
     this.min = utils.minFromArrayOfObj(this.data, 'y');
     this.max = utils.maxFromArrayOfObj(this.data, 'y');
     this.ratio = this.height / this.max;
+    this.numTicks = this.args.yAxis.tick.num;
+    this.coordInterval = this.args.canvas.innerHeight / this.numTicks;
+    this.valueInterval = this.max / this.numTicks;
   };
 
   return YAxis;

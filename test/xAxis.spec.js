@@ -6,12 +6,42 @@ define(
   var xAxisSpec = {
 
     run: function() {
+      before(function() {
+        this.canvas = stub.canvas();
+      });
 
-      describe('XAxis', function() {
+      describe('XAxis - With Graph', function() {
 
-        before(function() {
-          this.canvas = stub.canvas();
+        beforeEach(function() {
+          this.histogram = stub.histogramWithLabels();
         });
+
+        afterEach(function() {
+          if (this.histogram) {
+            this.histogram.destroy();
+          }
+        });
+
+        describe ("args.xAxis.drawLabel = true", function() {
+          it ('should draw the text labels', function() {
+            (1).should.equal(1);
+             //$("#histogram").should.have('g.x-axis-label');
+          });
+
+          it ('should draw the text labels in the correct positions', function() {
+
+          });
+        });
+
+        describe ("args.xAxis.label.drawBackground = true", function() {
+
+        });
+
+
+
+      });
+
+      describe('XAxis - Blank Canvas', function() {
 
         beforeEach(function() {
           this.xAxis = new dropchart.XAxis(argsFor.histogram());
@@ -32,7 +62,6 @@ define(
             $("#histogram").should.not.have('line.x-axis-line');
           });
         });
-
 
         describe('args.xAxis.line.show = true', function() {
 
@@ -55,7 +84,6 @@ define(
           });
 
         });
-
 
         describe('args.xAxis.show = false', function() {
 

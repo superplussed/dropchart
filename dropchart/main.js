@@ -8,6 +8,7 @@ require.config({
     fetch: './dropchart/lib/fetch',
     Axis: './dropchart/models/Axis',
     Rect: './dropchart/models/Rect',
+    Text: './dropchart/models/Text',
     XAxis: './dropchart/models/XAxis',
     YAxis: './dropchart/models/YAxis',
     Chart: './dropchart/models/Chart',

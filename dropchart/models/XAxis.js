@@ -1,6 +1,6 @@
 define('XAxis',
-  ['Axis', 'Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
-  function(Axis, Coord, Line, utils, fetch, $) {
+  ['Axis', 'Coord', 'Line', 'Text', 'utils', 'fetch', 'jquery', 'jquerySVG'],
+  function(Axis, Coord, Line, Text, utils, fetch, $) {
 
   XAxis.prototype = new Axis();
   XAxis.prototype.constructor = XAxis;
@@ -11,6 +11,23 @@ define('XAxis',
     this.axisArgs = this.args.xAxis;
     Axis.call(this, args);
   }
+
+  XAxis.prototype.drawLabels = function() {
+    var yPos = this.args.chart.height - this.coord.yToFloat('canvas', this.args.xAxis.label.yOffset),
+      i;
+    for (i = 0; i <= this.max; i ++) {
+      new Text({
+        svg: this.svg,
+        className: "x-axis-label",
+        parent: this.group,
+        value: this.data[i].x,
+        x: this.scale(i),
+        y: yPos,
+        style: this.args.xAxis.label.font
+      });
+    }
+
+  };
 
   XAxis.prototype.drawLine = function() {
     var y = (this.args.chart.height || this.args.canvas.height);
@@ -28,7 +45,7 @@ define('XAxis',
 
   XAxis.prototype.drawTicks = function() {
     var tickLength = this.coord.yToFloat('canvas', this.args.xAxis.tick.length) / 2,
-      yPos = this.args.chart.height - this.coord.yToFloat('canvas', this.args.xAxis.tick.position),
+      yPos = this.args.chart.height - this.coord.yToFloat('canvas', this.args.xAxis.tick.yOffset),
       i;
     for (i = 0; i <= this.max; i ++) {
       new Line({

@@ -19,6 +19,9 @@ define(['jquery', 'argsFor', 'dropchart'], function($, argsFor, dropchart) {
         canvas: argsFor.canvasWithInner(),
         data: argsFor.data()
       });
+    },
+    histogramWithLabels: function() {
+      return new dropchart.Histogram(argsFor.histogramWithLabels());
     }
   };
   return stub;
