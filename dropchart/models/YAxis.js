@@ -19,33 +19,33 @@ define('YAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
     this.coord = new Coord(args);
     this.createScale();
 
-    if (this.args.yAxis.show) {
+    if (this.args.yAxis.drawLine) {
       this.drawLine();
     }
-    if (this.args.yAxis.useTicks) {
+    if (this.args.yAxis.drawTicks) {
       this.drawTicks();
     }
-    if (this.args.yAxis.useLabels) {
+    if (this.args.yAxis.drawLabels) {
       this.drawLabels();
     }
   }
 
   YAxis.prototype.destroy = function() {
-    if (this.yAxisGroup) {
-      $(this.yAxisGroup).remove();
+    if (this.group) {
+      $(this.group).remove();
     }
   };
 
   YAxis.prototype.drawLine = function() {
-    this.yAxisGroup = this.svg.group("y-axis");
+    this.group = this.svg.group("y-axis-group");
     new Line({
       svg: this.svg,
       className: "y-axis-line",
-      parent: this.yAxisGroup,
+      parent: this.group,
       y1: 0,
       y2: "100%",
       x: this.args.yAxis.position,
-      style: this.args.yAxis
+      style: this.args.yAxis.line
     });
   };
 
@@ -61,7 +61,7 @@ define('YAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
       new Line({
         svg: this.svg,
         className: "y-axis-tick",
-        parent: this.yAxisGroup,
+        parent: this.group,
         y: that.scale(dataPoint),
         x1: xPos + tickLength,
         x2: xPos - tickLength,

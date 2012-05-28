@@ -15,6 +15,10 @@ define(['jquery', 'jquerySVG'], function($) {
 
     svg: function(args) {
       return $(this.innerContainer(args)).svg('get');
+    },
+
+    svgGroup: function(args, groupEl) {
+      return this.svg(args).getElementById($(groupEl).attr("id"));
     }
   };
   return fetch;

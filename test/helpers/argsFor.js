@@ -3,7 +3,7 @@ define(['jquery'], function(jquery) {
     canvas: function() {
       return {
         id: "histogram",
-        usePerc: false,
+        drawPerc: false,
         width: 400,
         height: 200,
         margin: {
@@ -35,24 +35,29 @@ define(['jquery'], function(jquery) {
     },
     xAxis: function() {
       return {
-        show: true,
-        strokeColor: "#000",
-        strokeWidth: 2,
-        position: "90%"
+        drawLine: true,
+        line: {
+          opacity: 1,
+          strokeColor: "#000",
+          strokeWidth: 2
+        }
       };
     },
     yAxis: function() {
       return {
-        show: true,
-        strokeColor: "#000",
-        strokeWidth: 2,
-        position: "5%"
+        drawLine: true,
+        line: {
+          strokeColor: "#000",
+          strokeWidth: 2,
+          position: "5%"
+        }
       };
     },
     xAxisWithTicks: function() {
       return $.extend({
-        useTicks: true,
+        drawTicks: true,
         tick: {
+          position: "90%",
           opacity: 1,
           strokeColor: "#000",
           strokeWidth: 1,
@@ -62,7 +67,7 @@ define(['jquery'], function(jquery) {
     },
     yAxisWithTicks: function() {
       return $.extend({
-        useTicks: true,
+        drawTicks: true,
         tick: {
           opacity: 1,
           strokeColor: "#000",

@@ -25,13 +25,19 @@ define('Histogram', ['Rect', 'XAxis', 'YAxis', 'fetch', 'utils'],
       this.width = this.args.canvas.innerWidth;
       this.height = this.args.canvas.innerHeight;
     }
-    args.chart.width = this.width;
-    args.chart.height = this.height;
 
-    this.xAxis = new XAxis(args);
+    this.group = this.svg.group("histogram-group", groupArgs);
+
+    this.args.chart.group = this.group;
+    this.args.chart.width = this.width;
+    this.args.chart.height = this.height;
+
     this.yAxis = new YAxis(args);
+    
+    this.args.chart.maxHeight = this.yAxis.max;
+    this.xAxis = new XAxis(args);
+   
 
-    this.group = this.svg.group("histogram", groupArgs);
     this.drawRects();
   }
 

@@ -7,6 +7,7 @@ define('XAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
     this.args = args;
     this.data = args.data;
     this.svg = fetch.svg(args);
+    this.chartGroup = args.chart.group;
 
     if (this.args.chart && this.args.chart.width) {
       this.width = this.args.chart.width;
@@ -19,45 +20,53 @@ define('XAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
     this.coord = new Coord(this.args);
     this.createScale();
 
-    if (this.args.xAxis.show) {
+    if (this.args.xAxis.drawLine) {
       this.drawLine();
     }
-    if (this.args.xAxis.useTicks) {
+    if (this.args.xAxis.drawTicks) {
       this.drawTicks();
     }
-    if (this.args.xAxis.useLabels) {
+    if (this.args.xAxis.drawLabels) {
       this.drawLabels();
     }
   }
 
   XAxis.prototype.destroy = function() {
-    if (this.xAxisGroup) {
-      $(this.xAxisGroup).remove();
+    if (this.group) {
+      $(this.group).remove();
     }
   };
 
   XAxis.prototype.drawLine = function() {
-    this.xAxisGroup = this.svg.group("x-axis");
+    var groupId = "x-axis-group",
+      y = (this.args.chart.maxHeight || 0);
+    if (this.args.chart && this.args.chart.group) {
+      var chartGroup = fetch.svgGroup(this.args, this.args.chart.group);
+      this.group = this.svg.group(chartGroup, groupId);
+    } else {
+      this.group = this.svg.group(groupId);
+    }
+
     new Line({
       svg: this.svg,
       className: "x-axis-line",
-      parent: this.xAxisGroup,
+      parent: this.group,
       x1: 0,
       x2: "100%",
-      y: this.args.xAxis.position,
-      style: this.args.xAxis
+      y: y,
+      style: this.args.xAxis.line
     });
   };
 
   XAxis.prototype.drawTicks = function() {
     var tickLength = this.coord.yToFloat('canvas', this.args.xAxis.tick.length) / 2,
-      yPos = this.coord.yToFloat('canvas', this.args.xAxis.position),
+      yPos = this.coord.yToFloat('canvas', this.args.xAxis.tick.position),
       i;
     for (i = 0; i <= this.max; i ++) {
       new Line({
         svg: this.svg,
         className: "x-axis-tick",
-        parent: this.xAxisGroup,
+        parent: this.group,
         x: this.scale(i),
         y1: yPos + tickLength,
         y2: yPos - tickLength,
