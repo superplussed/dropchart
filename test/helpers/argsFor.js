@@ -78,18 +78,23 @@ define(['jquery'], function(jquery) {
         }
       }, this.yAxis());
     },
+    chartHistogram: function() {
+      return  {
+        height: 180,
+        width: 380,
+        bar: {
+          color: '#DDDDDD',
+          strokeColor: '#000000',
+          strokeWidth: 2,
+          opacity: 1,
+          radius: 5,
+          widthModifier: 1
+        }
+      };
+    },
     histogram: function() {
       return {
-        chart: {
-          bar: {
-            color: '#DDDDDD',
-            strokeColor: '#000000',
-            strokeWidth: 2,
-            opacity: 1,
-            radius: 5,
-            widthModifier: 1
-          }
-        },
+        chart: this.chartHistogram(),
         data: this.data(),
         canvas: this.canvasWithInner(),
         xAxis: this.xAxisWithTicks(),
