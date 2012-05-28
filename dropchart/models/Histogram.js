@@ -36,6 +36,7 @@ define('Histogram', ['Rect', 'XAxis', 'YAxis', 'fetch', 'utils'],
     this.yAxis = new YAxis(args);
 
     this.drawRects();
+    this.afterRender();
   }
 
   Histogram.prototype.drawRects = function() {
@@ -52,6 +53,11 @@ define('Histogram', ['Rect', 'XAxis', 'YAxis', 'fetch', 'utils'],
         style: this.args.chart.bar
       });
     }
+  };
+
+  Histogram.prototype.afterRender = function() {
+    this.xAxis.render();
+    this.yAxis.render();
   };
 
   Histogram.prototype.destroy = function() {

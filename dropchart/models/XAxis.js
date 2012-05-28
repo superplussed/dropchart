@@ -4,10 +4,10 @@ define('XAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
   function XAxis(args) {
     console.log('init XAxis');
 
+    this.groupId = "x-axis-group";
     this.args = args;
     this.data = args.data;
     this.svg = fetch.svg(args);
-    this.chartGroup = args.chart.group;
 
     if (this.args.chart && this.args.chart.width) {
       this.width = this.args.chart.width;
@@ -19,6 +19,23 @@ define('XAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
 
     this.coord = new Coord(this.args);
     this.createScale();
+  }
+
+  XAxis.prototype.destroy = function() {
+    if (this.group) {
+      $(this.group).remove();
+    }
+  };
+
+  XAxis.prototype.render = function() {
+
+    if (!this.group) {
+      if (this.args.chart && this.args.chart.group) {
+        this.group = this.svg.group(fetch.svgGroup(this.args, this.args.chart.group), this.groupId);
+      } else {
+        this.group = this.svg.group(this.groupId);
+      }
+    }
 
     if (this.args.xAxis.drawLine) {
       this.drawLine();
@@ -29,30 +46,17 @@ define('XAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
     if (this.args.xAxis.drawLabels) {
       this.drawLabels();
     }
-  }
-
-  XAxis.prototype.destroy = function() {
-    if (this.group) {
-      $(this.group).remove();
-    }
   };
 
   XAxis.prototype.drawLine = function() {
-    var groupId = "x-axis-group",
-      y = (this.args.chart.height || this.args.canvas.height);
-    if (this.args.chart && this.args.chart.group) {
-      var chartGroup = fetch.svgGroup(this.args, this.args.chart.group);
-      this.group = this.svg.group(chartGroup, groupId);
-    } else {
-      this.group = this.svg.group(groupId);
-    }
+    var y = (this.args.chart.height || this.args.canvas.height);
 
     new Line({
       svg: this.svg,
       className: "x-axis-line",
       parent: this.group,
-      x1: "-100%",
-      x2: "100%",
+      x1: 0,
+      x2: this.args.chart.width,
       y: y,
       style: this.args.xAxis.line
     });
@@ -60,7 +64,7 @@ define('XAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
 
   XAxis.prototype.drawTicks = function() {
     var tickLength = this.coord.yToFloat('canvas', this.args.xAxis.tick.length) / 2,
-      yPos = this.coord.yToFloat('canvas', this.args.xAxis.tick.position),
+      yPos = this.args.chart.height - this.coord.yToFloat('canvas', this.args.xAxis.tick.position),
       i;
     for (i = 0; i <= this.max; i ++) {
       new Line({

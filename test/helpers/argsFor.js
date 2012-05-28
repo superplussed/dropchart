@@ -38,7 +38,7 @@ define(['jquery'], function(jquery) {
         drawLine: true,
         line: {
           opacity: 1,
-          strokeColor: "#000",
+          strokeColor: "red",
           strokeWidth: 2
         }
       };
@@ -47,9 +47,9 @@ define(['jquery'], function(jquery) {
       return {
         drawLine: true,
         line: {
-          strokeColor: "#000",
-          strokeWidth: 2,
-          position: "5%"
+          opacity: 1,
+          strokeColor: "red",
+          strokeWidth: 2
         }
       };
     },
@@ -57,11 +57,11 @@ define(['jquery'], function(jquery) {
       return $.extend({
         drawTicks: true,
         tick: {
-          position: "80%",
+          position: -3,
           opacity: 1,
           strokeColor: "#000",
           strokeWidth: 1,
-          length: 10
+          length: 6
         }
       }, this.xAxis());
     },
@@ -69,10 +69,11 @@ define(['jquery'], function(jquery) {
       return $.extend({
         drawTicks: true,
         tick: {
+          position: -3,
           opacity: 1,
           strokeColor: "#000",
           strokeWidth: 1,
-          length: 10,
+          length: 6,
           num: 4
         }
       }, this.yAxis());

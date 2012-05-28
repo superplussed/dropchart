@@ -4,6 +4,7 @@ define('YAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
   function YAxis(args) {
     console.log('init YAxis');
 
+    this.groupId = "y-axis-group";
     this.args = args;
     this.data = args.data;
     this.svg = fetch.svg(args);
@@ -18,6 +19,23 @@ define('YAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
 
     this.coord = new Coord(args);
     this.createScale();
+  }
+
+  YAxis.prototype.destroy = function() {
+    if (this.group) {
+      $(this.group).remove();
+    }
+  };
+
+  YAxis.prototype.render = function() {
+
+    if (!this.group) {
+      if (this.args.chart && this.args.chart.group) {
+        this.group = this.svg.group(fetch.svgGroup(this.args, this.args.chart.group), this.groupId);
+      } else {
+        this.group = this.svg.group(this.groupId);
+      }
+    }
 
     if (this.args.yAxis.drawLine) {
       this.drawLine();
@@ -28,30 +46,23 @@ define('YAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
     if (this.args.yAxis.drawLabels) {
       this.drawLabels();
     }
-  }
-
-  YAxis.prototype.destroy = function() {
-    if (this.group) {
-      $(this.group).remove();
-    }
   };
 
   YAxis.prototype.drawLine = function() {
-    this.group = this.svg.group("y-axis-group");
     new Line({
       svg: this.svg,
       className: "y-axis-line",
       parent: this.group,
       y1: 0,
-      y2: "100%",
-      x: this.args.yAxis.position,
+      y2: this.args.chart.height,
+      x: 0,
       style: this.args.yAxis.line
     });
   };
 
   YAxis.prototype.drawTicks = function() {
     var tickLength = this.coord.xToFloat('canvas', this.args.yAxis.tick.length) / 2,
-      xPos = this.coord.xToFloat('canvas', this.args.yAxis.position),
+      xPos = this.coord.xToFloat('chart', this.args.yAxis.tick.position),
       numTicks = this.args.yAxis.tick.num,
       interval = this.args.canvas.innerHeight / numTicks,
       dataPoint = 0,
