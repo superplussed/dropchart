@@ -7,8 +7,18 @@ define('XAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
     this.args = args;
     this.data = args.data;
     this.svg = fetch.svg(args);
+
+    if (this.args.chart && this.args.chart.width) {
+      this.width = this.args.chart.width;
+    } else if (this.args.canvas.innerWidth) {
+      this.width = this.args.canvas.innerWidth;
+    } else {
+      this.width = this.args.canvas.width;
+    }
+
     this.coord = new Coord(this.args);
     this.createScale();
+
     if (this.args.xAxis.show) {
       this.drawLine();
     }
@@ -40,8 +50,8 @@ define('XAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
   };
 
   XAxis.prototype.drawTicks = function() {
-    var tickLength = this.coord.yToFloat(this.args.xAxis.tick.length) / 2,
-      yPos = this.coord.yToFloat(this.args.xAxis.position),
+    var tickLength = this.coord.yToFloat('canvas', this.args.xAxis.tick.length) / 2,
+      yPos = this.coord.yToFloat('canvas', this.args.xAxis.position),
       i;
     for (i = 0; i <= this.max; i ++) {
       new Line({
@@ -66,7 +76,6 @@ define('XAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
     this.scaleArray = [];
     this.min = 0;
     this.max = this.data.length - 1;
-    this.width = (this.args.canvas.innerWidth ? this.args.canvas.innerWidth : this.args.canvas.width);
     this.interval = this.width / this.args.data.length;
     coord = this.interval / 2;
     for (i = this.min; i <= this.max; i ++) {

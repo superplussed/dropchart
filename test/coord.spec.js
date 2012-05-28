@@ -9,7 +9,7 @@ define(['jquery', 'dropchart', 'argsFor'], function($, dropchart, argsFor) {
         describe("options.usePerc: true", function() {
 
           before(function(done){
-            var canvasArgs = argsFor.canvas();
+            var canvasArgs = argsFor.canvasWithInnerNoMargin();
             canvasArgs.usePerc = true;
             this.coord = new dropchart.Coord({
               canvas: canvasArgs
@@ -20,8 +20,8 @@ define(['jquery', 'dropchart', 'argsFor'], function($, dropchart, argsFor) {
           describe('#x', function() {
 
             it ('should convert a number to a percentage if necessary', function() {
-              this.coord.x(10).should.equal("2.5%");
-              this.coord.x("2.5%").should.equal("2.5%");
+              this.coord.x('canvas', 10).should.equal("2.5%");
+              this.coord.x('canvas', "2.5%").should.equal("2.5%");
             });
 
           });
@@ -29,8 +29,8 @@ define(['jquery', 'dropchart', 'argsFor'], function($, dropchart, argsFor) {
           describe('#y', function() {
 
             it ('should convert a number to a percentage if necessary', function() {
-              this.coord.y(10).should.equal("5%");
-              this.coord.y("5%").should.equal("5%");
+              this.coord.y('canvas', 10).should.equal("5%");
+              this.coord.y('canvas', "5%").should.equal("5%");
             });
 
           });
@@ -38,8 +38,8 @@ define(['jquery', 'dropchart', 'argsFor'], function($, dropchart, argsFor) {
           describe('#xToFloat', function() {
 
             it ('should convert a percentage to a number if necessary', function() {
-              this.coord.xToFloat("2.5%").should.equal(10);
-              this.coord.xToFloat(10).should.equal(10);
+              this.coord.xToFloat('canvas', "2.5%").should.equal(10);
+              this.coord.xToFloat('canvas', 10).should.equal(10);
             });
 
           });
@@ -47,8 +47,8 @@ define(['jquery', 'dropchart', 'argsFor'], function($, dropchart, argsFor) {
           describe('#yToFloat', function() {
 
             it ('should convert a percentage to a number if necessary', function() {
-              this.coord.yToFloat("5%").should.equal(10);
-              this.coord.yToFloat(10).should.equal(10);
+              this.coord.yToFloat('canvas', "5%").should.equal(10);
+              this.coord.yToFloat('canvas', 10).should.equal(10);
             });
 
           });

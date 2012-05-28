@@ -20,6 +20,12 @@ define(['jquery'], function(jquery) {
         innerHeight: 180
       }, this.canvas());
     },
+    canvasWithInnerNoMargin: function() {
+      return $.extend({
+        innerWidth: 400,
+        innerHeight: 200
+      }, this.canvas());
+    },
     data: function() {
       return [
         {x: "foo", y: 180},
@@ -32,7 +38,7 @@ define(['jquery'], function(jquery) {
         show: true,
         strokeColor: "#000",
         strokeWidth: 2,
-        position: "80%"
+        position: "90%"
       };
     },
     yAxis: function() {
@@ -79,7 +85,9 @@ define(['jquery'], function(jquery) {
           }
         },
         data: this.data(),
-        canvas: this.canvasWithInner()
+        canvas: this.canvasWithInner(),
+        xAxis: this.xAxisWithTicks(),
+        yAxis: this.yAxisWithTicks()
       };
     }
   };

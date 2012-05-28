@@ -7,6 +7,15 @@ define('YAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
     this.args = args;
     this.data = args.data;
     this.svg = fetch.svg(args);
+
+    if (this.args.chart && this.args.chart.height) {
+      this.height = this.args.chart.height;
+    } else if (this.args.canvas.innerHeight) {
+      this.height = this.args.canvas.innerHeight;
+    } else {
+      this.height = this.args.canvas.height;
+    }
+
     this.coord = new Coord(args);
     this.createScale();
 
@@ -41,8 +50,8 @@ define('YAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
   };
 
   YAxis.prototype.drawTicks = function() {
-    var tickLength = this.coord.yToFloat(this.args.yAxis.tick.length) / 2,
-      xPos = this.coord.xToFloat(this.args.yAxis.position),
+    var tickLength = this.coord.xToFloat('canvas', this.args.yAxis.tick.length) / 2,
+      xPos = this.coord.xToFloat('canvas', this.args.yAxis.position),
       numTicks = this.args.yAxis.tick.num,
       interval = this.args.canvas.innerHeight / numTicks,
       dataPoint = 0,
@@ -67,11 +76,8 @@ define('YAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
   };
 
   YAxis.prototype.createScale = function() {
-    var i,
-      coord;
     this.min = utils.minFromArrayOfObj(this.data, 'y');
     this.max = utils.maxFromArrayOfObj(this.data, 'y');
-    this.height = (this.args.canvas.innerHeight ? this.args.canvas.innerHeight : this.args.canvas.height);
     this.ratio = this.height / this.max;
   };
 

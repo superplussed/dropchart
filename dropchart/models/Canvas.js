@@ -4,7 +4,7 @@ define('Canvas', ['Coord', 'utils', 'fetch', 'jquery', 'jquerySVG'],
   function Canvas(args) {
     console.log('init Canvas');
     this.args = args;
-    this.coord = new Coord(args);
+    this.canvas = new Coord(args);
 
     this.el = fetch.container(args);
     this.el.addClass("dc-container");
@@ -19,12 +19,12 @@ define('Canvas', ['Coord', 'utils', 'fetch', 'jquery', 'jquerySVG'],
 
   Canvas.prototype.setCanvasDimensions = function() {
     var rootId = this.args.canvas.id + "-root";
-    this.args.canvas.innerWidth = this.coord.x( this.coord.xToFloat( this.args.canvas.width ) - this.coord.xToFloat( this.args.canvas.margin.left ) - this.coord.xToFloat( this.args.canvas.margin.right ));
-    this.args.canvas.innerHeight = this.coord.y( this.coord.yToFloat( this.args.canvas.height ) - this.coord.yToFloat( this.args.canvas.margin.top ) - this.coord.yToFloat( this.args.canvas.margin.bottom ));
+    this.args.canvas.innerWidth = this.coord.x( 'canvas', this.coord.xToFloat( 'canvas', this.args.canvas.width ) - this.coord.xToFloat( 'canvas', this.args.canvas.margin.left) - this.coord.xToFloat( 'canvas', this.args.canvas.margin.right ));
+    this.args.canvas.innerHeight = this.coord.y( 'canvas', this.coord.yToFloat( 'canvas', this.args.canvas.width ) - this.coord.yToFloat( 'canvas', this.args.canvas.margin.top) - this.coord.yToFloat( 'canvas', this.args.canvas.margin.bottom ));
     
     $( this.el ).css({
-      "width": this.coord.x( this.args.canvas.width ),
-      "height": this.coord.y( this.args.canvas.height )
+      "width": this.coord.x( 'canvas', this.args.canvas.width ),
+      "height": this.coord.y( 'canvas', this.args.canvas.height )
     });
       
     $( this.el.find('.dc-inner-container') ).css({

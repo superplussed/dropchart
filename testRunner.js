@@ -3,14 +3,14 @@ define(['jquery', 'test', 'dropchart'], function($, test, dropchart) {
     initialize: function() {
 
       var i, specs = [
-        test.histogramSpec,
-        test.canvasSpec,
+        test.coordSpec
+      ];
+      //test.histogramSpec
+/*        test.canvasSpec,
         test.xAxisSpec,
         test.yAxisSpec,
         test.coordSpec,
-        test.utilsSpec
-      ];
-
+        test.utilsSpec*/
       mocha.setup('bdd');
       for (i = 0; i <= specs.length - 1; i ++) {
         self.prepareTest(specs[i]);
