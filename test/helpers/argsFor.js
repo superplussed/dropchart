@@ -57,7 +57,7 @@ define(['jquery'], function(jquery) {
       return $.extend({
         drawTicks: true,
         tick: {
-          position: "90%",
+          position: "80%",
           opacity: 1,
           strokeColor: "#000",
           strokeWidth: 1,

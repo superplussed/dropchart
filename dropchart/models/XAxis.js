@@ -39,7 +39,7 @@ define('XAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
 
   XAxis.prototype.drawLine = function() {
     var groupId = "x-axis-group",
-      y = (this.args.chart.maxHeight || 0);
+      y = (this.args.chart.height || this.args.canvas.height);
     if (this.args.chart && this.args.chart.group) {
       var chartGroup = fetch.svgGroup(this.args, this.args.chart.group);
       this.group = this.svg.group(chartGroup, groupId);
@@ -51,7 +51,7 @@ define('XAxis', ['Coord', 'Line', 'utils', 'fetch', 'jquery', 'jquerySVG'],
       svg: this.svg,
       className: "x-axis-line",
       parent: this.group,
-      x1: 0,
+      x1: "-100%",
       x2: "100%",
       y: y,
       style: this.args.xAxis.line
