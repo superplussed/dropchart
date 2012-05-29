@@ -3,12 +3,12 @@ define(['jquery', 'test', 'dropchart'], function($, test, dropchart) {
     initialize: function() {
 
       var i, specs = [
-        test.histogramSpec,
-        test.canvasSpec,
+        test.utilsSpec,
+        test.coordSpec,
         test.xAxisSpec,
         test.yAxisSpec,
-        test.coordSpec,
-        test.utilsSpec,
+        test.canvasSpec,
+        test.histogramSpec,
         test.builderSpec
       ];
 
