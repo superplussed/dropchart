@@ -6,6 +6,7 @@ require.config({
     stub: './test/helpers/stub',
     testRunner: './test/testRunner',
     utilsSpec: './test/utils.spec',
+    builderSpec: './test/builder.spec',
     canvasSpec: './test/canvas.spec',
     coordSpec: './test/coord.spec',
     histogramSpec: './test/histogram.spec',
@@ -15,8 +16,8 @@ require.config({
   //,urlArgs: 'uncache=' + (+new Date())
 });
 
-define('test', ['utilsSpec', 'canvasSpec', 'coordSpec', 'xAxisSpec', 'histogramSpec', 'yAxisSpec'],
-  function(utilsSpec, canvasSpec, coordSpec, xAxisSpec, histogramSpec, yAxisSpec) {
+define('test', ['utilsSpec', 'canvasSpec', 'coordSpec', 'xAxisSpec', 'histogramSpec', 'yAxisSpec', 'builderSpec'],
+  function(utilsSpec, canvasSpec, coordSpec, xAxisSpec, histogramSpec, yAxisSpec, builderSpec) {
   return {
     name: 'test',
     utilsSpec: utilsSpec,
@@ -24,6 +25,7 @@ define('test', ['utilsSpec', 'canvasSpec', 'coordSpec', 'xAxisSpec', 'histogramS
     coordSpec: coordSpec,
     histogramSpec: histogramSpec,
     xAxisSpec: xAxisSpec,
-    yAxisSpec: yAxisSpec
+    yAxisSpec: yAxisSpec,
+    builderSpec: builderSpec
   };
 });

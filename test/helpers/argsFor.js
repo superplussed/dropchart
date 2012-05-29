@@ -3,6 +3,7 @@ define(['jquery'], function(jquery) {
     canvas: function() {
       return {
         id: "histogram",
+        background: 'none',
         drawPerc: false,
         width: 400,
         height: 200,

@@ -6,9 +6,7 @@ define(['jquery', 'dropchart', 'argsFor'], function($, dropchart, argsFor) {
     run: function() {
       describe('ClassName', function() {
 
-        before(function(done){
-  
-          done();
+        before(function() {
         });
 
         describe('#functionName', function() {

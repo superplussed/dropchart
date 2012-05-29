@@ -73,9 +73,11 @@ define('YAxis',
     this.min = utils.minFromArrayOfObj(this.data, 'y');
     this.max = utils.maxFromArrayOfObj(this.data, 'y');
     this.ratio = this.height / this.max;
-    this.numTicks = this.args.yAxis.tick.num;
-    this.coordInterval = this.args.canvas.innerHeight / this.numTicks;
-    this.valueInterval = this.max / this.numTicks;
+    if (this.args.yAxis.tick) {
+      this.numTicks = this.args.yAxis.tick.num;
+      this.coordInterval = this.args.canvas.innerHeight / this.numTicks;
+      this.valueInterval = this.max / this.numTicks;
+    }
   };
 
   return YAxis;
